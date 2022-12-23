@@ -1,0 +1,12 @@
+user management -
+Roles
+Different DB
+Interactivity
+Added record should come to top
+
+Home
+Production
+Dashboard - Three graphs
+Logo
+Search for other pages
+Excel and PDF for other pages

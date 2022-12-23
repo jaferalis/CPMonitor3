@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*Common Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+  font-family: 'jura', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*End of Common Styles */
+
+/* Mouser Circle */
+
+.mouse-circle,
+.mouse-dot {
+  border-radius: 50%;
+  position: fixed;
+  z-index: 300;
+  transform: translate(-50%, -50%);
+}
+
+.circle-1 {
+  background: url('/assets/images/gantry-2.jpg') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.5rem dotted #a14b1a;
+}
+
+.circle-2 {
+  background: url('/assets/images/gantry.jpg') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.5rem dashed #ffbd07;
+}
+
+.circle-3 {
+  background: url('/assets/images/cooling.JPG') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.5rem dotted #a14b1a;
+}
+
+.circle-4 {
+  background: url('/assets/images/cee-pee.JPG') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.7rem double #fff;
+}
+
+.circle-5 {
+  background: url('/assets/images/designer.jpg') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.7rem double #fff;
+  z-index: 1;
+}
+
+.circle-6 {
+  background: url('/assets/images/cnc-operation.jfif') center no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  border: 0.5rem dashed #ffbd07;
+}
+
+
+
+.mouse-circle {
+  width: 6rem;
+  height: 6rem;
+  border: 0.1rem solid #c7a622;
+  animation: mouseCircleAnim 10s infinite linear;
+}
+
+@keyframes mouseCircleAnim {
+  0% {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  25% {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  35% {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  70% {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  100% {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+
+.mouse-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #9b0e0e;
+  animation: mouseDotAnim 10s infinite linear;
+}
+
+@keyframes mouseDotAnim {
+  0% {
+    width: 0.5rem;
+    height: 00.5rem;
+
+  }
+
+  55% {
+    width: 1.5rem;
+    height: 1.5rem;
+
+  }
+
+  100% {
+    width: 0.5rem;
+    height: 00.5rem;
+  }
+}
+
+/* End Mouser Circle */
+
+/* Page BG */
+.page-bg {
+  margin: 10px;
+  height: 98%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('/assets/images/bg.jpg') center no-repeat;
+    border-width:10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+  margin: 10px;
+  background-color: white;
+  border-width:10px;
+  border-radius: 10px;
+  height: 98%;
+}
+/* End of Page BG */
+
+/* section 1 */
+.section-1 {
+
+  width: 100%;
+  height: 100vh;
+
+}
+
+/* logo */
+.logo {
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #fff
+}
+
+/* end of logo */
+
+/* Animated circles */
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  
+}
+
+.circle {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+  opacity: 0.8;
+}
+
+.main-circle {
+  width: 20rem;
+  height: 20rem;
+
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #9b0e0e;
+  align-items: center;
+  align-content: center;
+}
+
+
+.text-top {
+  width: 10rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #9a1212;
+  align-items: center;
+  align-content: center;
+}
+/* .main-circle img {
+  mix-blend-mode: color-dodge;
+} */
+
+/* End of Animated circles */
+
+/* featured text */
+.featured-text{
+  font-size: 2rem;
+  color: #fff;
+  text-transform:uppercase;
+  width: 0;
+  word-wrap: break-word;
+  line-height: 2.0;
+  position: sticky;
+  top: 0;
+}
+/* End of featured text */
+.featured-text-1{
+  margin: 0 auto 0 10rem;
+}
+
+.featured-text-2{
+  margin: 0 10rem 0 auto;
+}
+/* End of section 1 */
+
+/* marquee {
+  font-size: 50pt;
+} */
+
+

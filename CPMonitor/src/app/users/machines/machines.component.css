@@ -1,0 +1,30 @@
+.container{
+    margin: 10px;
+    background-color: white;
+    border-width:10px;
+    border-radius: 10px;
+    height: 98%;
+  }
+
+  table {  
+    width: 95%;  /* width: 90%; for the table size */
+    margin: 0 auto; ; /* margin: 0 auto;  This will center the table */
+  }
+
+  .example-button-row {
+    margin-left: 90px; 
+    max-width: 400px;
+    vertical-align: middle;
+  }
+
+  .mat-header-cell {
+    background: #E089AB;
+    font-size:medium;
+    font-weight: bold;
+  }
+
+  .table-container {
+    margin-top: 10px;
+    max-height: 500px;
+    overflow: auto;
+  }

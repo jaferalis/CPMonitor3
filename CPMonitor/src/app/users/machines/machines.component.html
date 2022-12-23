@@ -1,0 +1,120 @@
+<div class="container">
+    <mat-toolbar style="background-color:#E089AB">
+        <span class="fill-remaining-space"></span>
+        <span>Machine Information</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+    <br>
+    <!-- CRUD Buttons -->
+    <div >
+        <!-- <h2 style="display:inline-block; margin-left:10px">Device Health</h2> -->
+        <button mat-raised-button color="accent"
+            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"  
+            (click)="this.router.navigateByUrl('users/machine')">Add
+        </button>
+        <button mat-raised-button color="accent"
+            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
+            [disabled]=false (click)="edit()">Edit
+        </button>
+
+        <button mat-raised-button color="accent"
+            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
+            [disabled]=false (click)="delete()">Delete
+        </button>
+
+    </div>
+    <!-- Leave a gap here -->
+    <div class="example-button-row" >
+        <button mat-raised-button color="accent" style="margin-right: 10px;" [cdkCopyToClipboard]="copyData2()"
+            (click)="copyData2()">Copy</button>
+        <button mat-raised-button color="accent" style="margin-right: 10px;" (click)="exportexcel()">Excel</button>
+        <button mat-raised-button color="accent" style="margin-right: 10px;" (click)="exportpdf()">PDF</button>
+        <br>
+        <br>
+        <mat-form-field floatLabel="never">
+            <input #search matInput placeholder="Search" (keyup)="searchThis(search.value)">
+        </mat-form-field>
+    </div>
+    <br>
+    <!-- CRUD Buttons -->
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="excel-table">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="machineSelection.hasValue() && isAllSelected()"
+                        [indeterminate]="machineSelection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? machineSelection.toggle(row) : null"
+                        [checked]="machineSelection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+            <!-- End Position Column -->
+
+            <!-- Machine Name Column -->
+            <ng-container matColumnDef="machinename">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.machinename}} </td>
+            </ng-container>
+            <!-- End MahineName Column -->
+
+            <!-- Machine Type Column -->
+            <ng-container matColumnDef="machinetype">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.machinetype}} </td>
+            </ng-container>
+            <!-- End Machine type Column -->            
+
+            <!-- Purchase Date Column -->
+            <ng-container matColumnDef="purchasedate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.purchasedate | date:'short'}} </td>
+            </ng-container>
+            <!-- End Purchse Date Column -->
+
+            <!-- Vendor  Column -->
+            <ng-container matColumnDef="vendor">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor </th>
+                <td mat-cell *matCellDef="let element"> {{element.vendor}} </td>
+            </ng-container>
+            <!-- End Vendor Column --> 
+
+            <!-- Ph Number Column -->
+            <ng-container matColumnDef="vendorphone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Phone Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.vendorphone}} </td>
+            </ng-container>
+            <!-- End Ph Number Column -->
+
+
+            <!-- Purchase Date Column -->
+            <ng-container matColumnDef="amcrenewal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> AMC renewal </th>
+                <td mat-cell *matCellDef="let element"> {{element.amcrenewal | date:'short'}} </td>
+            </ng-container>
+            <!-- End Purchse Date Column -->
+            
+            
+            <!-- This displays all columns and added the selection toggle for selection check box -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns sticky:true"></tr>
+            <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </div>
+
+    <mat-paginator #devicePaginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+
+</div>

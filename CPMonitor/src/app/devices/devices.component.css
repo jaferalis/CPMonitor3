@@ -1,0 +1,83 @@
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(232, 236, 238);
+  }
+  
+  .flex-container > div {
+    background-color: #E089AB;
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  margin-left: 90px; 
+  max-width: 400px;
+  vertical-align: middle;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+.container{
+  margin: 10px;
+  background-color: white;
+  border-width:10px;
+  border-radius: 10px;
+  height: 98%;
+}
+
+  /* table for the device */
+table {  
+    width: 95%;  /* width: 90%; for the table size */
+    margin: 0 auto; ; /* margin: 0 auto;  This will center the table */
+  }
+
+.mat-header-cell {
+  background: #E089AB;
+  font-size:medium;
+  font-weight: bold;
+}
+
+/* .fill-remaining-space{
+  flex: 1 1 auto
+} */
+
+  /* end of table for the device */
+
+  /* This is for scrollable rows if the paging is changed */
+  .table-container {
+    margin-top: 10px;
+    max-height: 300px;
+    overflow: auto;
+  }

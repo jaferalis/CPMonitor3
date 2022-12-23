@@ -1,0 +1,101 @@
+<div class="container">
+  <mat-toolbar style="background-color:#E089AB">
+    <span class="fill-remaining-space"></span>
+    <span>Production Form</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <form   [formGroup]="deviceForm"   (ngSubmit)="onSubmit()"  class="normal-form">
+    <!-- <mat-grid-list cols="2" rowHeight="600px">
+        <mat-grid-tile> -->
+            <div class="controles-container">
+
+                <!-- For Machine Name field -->
+                <mat-form-field class="example-form-field" appearance="fill">
+                  <mat-label>Machine Name</mat-label>
+                  <mat-select [(value)]="selectedName" formControlName="machinename">
+                    <mat-option value="Lathe-1">Lathe-1</mat-option>
+                    <mat-option value="Lathe-2">Lathe-2</mat-option>
+                    <mat-option value="Lathe-3">Lathe-3</mat-option>
+                    <mat-option value="Lathe-4">Lathe-4</mat-option>
+                    <mat-option value="CNC-1">CNC-1</mat-option>
+                    <mat-option value="CNC-2">CNC-2</mat-option>
+                    <mat-option value="VMC-1">VMC-1</mat-option>
+                    <mat-option value="VMC-2">VMC-2</mat-option>
+                    <mat-option value="VMC-3">VMC-3</mat-option>    
+                    <mat-option value="MITR">MITR</mat-option>        
+                    <mat-option value="Radial Drill">Radial Drill</mat-option>           
+                    <mat-option value="Jig Boring">Jig Boring</mat-option>
+                    <mat-option value="Milling">Milling</mat-option>                                        
+                  </mat-select>
+                </mat-form-field>
+                <!-- End of Machine Name field -->
+
+                <!-- For Machine Type field -->
+                <mat-form-field class="example-form-field" appearance="fill">
+                  <mat-label>Machine Type</mat-label>
+                  <mat-select [(value)]="selectedType" formControlName="machinetype">
+                    <mat-option *ngFor="let machinetype of machinetypes" [value]="machinetype">
+                      {{machinetype}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              <!-- End of Machine Type field -->
+               
+
+                <!-- For Description field -->
+                <mat-form-field class="example-form-field">
+                    <mat-label>Description</mat-label>
+                    <input matInput type="text" formControlName="description">
+                    <button *ngIf="description" matSuffix mat-icon-button aria-label="Clear" (click)="description=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!-- End of Description field -->           
+                <!-- For OPerator field -->
+                <mat-form-field class="example-form-field" appearance="fill">
+                  <mat-label>Operator Name</mat-label>
+                  <mat-select [(value)]="selectedOperator" formControlName="operator">
+                    <mat-option *ngFor="let operator of operators" [value]="operator.name">
+                      {{operator.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- End of Operator field -->    
+                
+                <!-- For Raw Qty field -->
+                <mat-form-field class="example-form-field">
+                    <mat-label>Raw Quantity</mat-label>
+                    <input matInput type="number" formControlName="rawqty">
+                    <button *ngIf="rawqty" matSuffix mat-icon-button aria-label="Clear" (click)="rawqty=0">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!-- End of Raw Quantity field -->    
+                
+                <!-- For Achieved field -->
+                <mat-form-field class="example-form-field">
+                    <mat-label>Achieved Quantity</mat-label>
+                    <input matInput type="number" formControlName="achievedqty">
+                    <button *ngIf="achievedqty" matSuffix mat-icon-button aria-label="Clear" (click)="achievedqty=0">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <!-- End of Achived qty field -->    
+                <!-- For Remarks field -->
+                <mat-form-field class="example-form-field">
+                  <mat-label>Remarks</mat-label>
+                  <input matInput type="text" formControlName="remarks">
+                  <button *ngIf="remarks" matSuffix mat-icon-button aria-label="Clear" (click)="remarks=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+              </mat-form-field>
+    
+            </div> 
+        <!-- </mat-grid-tile>
+      
+    </mat-grid-list> -->
+    <button type="submit" mat-raised-button color="primary" class="buttonspace">Submit</button>
+    <button  mat-raised-button color="warn" class="buttonspace">Clear</button>  
+</form>
+
+</div>

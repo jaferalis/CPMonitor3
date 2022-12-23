@@ -1,0 +1,81 @@
+
+.flex-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  
+  .single-chart {
+    width: 33%;
+    justify-content: space-around;
+  }
+  
+  .circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+  }
+  
+  .circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+  }
+  
+  .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+  
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+  
+  .circular-chart.orange .circle {
+    stroke: #ff9f00;
+  }
+  
+  .circular-chart.green .circle {
+    stroke: #4CC790;
+  }
+  
+  .circular-chart.blue .circle {
+    stroke: #3c9ee5;
+  }
+  
+  .percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+  }
+  
+  
+  
+  .menu-bar li {
+  
+    display: inline-block;
+  
+    margin: 0;
+  
+    margin-right: 5px;
+  
+  }
+
+  .container{
+    margin: 10px;
+    background-color: white;
+    border-width:10px;
+    border-radius: 10px;
+    height: 98%;
+  }
+
+    /* table for the device */
+table {  
+  width: auto;  /* width: 90%; for the table size */
+  margin: 0 auto; ; /* margin: 0 auto;  This will center the table */
+}

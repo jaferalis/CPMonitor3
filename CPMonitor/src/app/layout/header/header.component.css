@@ -1,0 +1,25 @@
+.example-spacer{
+    flex: 1 1 auto
+}
+.title-space{
+    padding: 10px;
+    color: azure;
+}
+.toolbar{
+    background-color: #303331;
+    width:auto;
+}
+
+.header{
+    position: sticky;
+    background-color: #303331;
+    width: 100%;
+    padding: 2px ;
+    top: 0;
+}
+
+.headtext{
+    color: white;
+    float: right;
+    margin-bottom: 20px;
+}
