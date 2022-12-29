@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'CPMonitor'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06680632F22644468A7668745CFD8F23 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_54A93878B1214442A1050040B0A88458 }}
           package: .
