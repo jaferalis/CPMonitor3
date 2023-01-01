@@ -10,6 +10,11 @@ async function initialize() {
     // create db if it doesn't already exist
     const { host, port, user, password, database } = config.database;
 //    const mysqlPort = process.env.MYSQL_PORT;
+    console.log(config.database);
+    console.log(host);
+    console.log(port);
+    console.log(user);
+    console.log(password);
     const connection = await mysql.createConnection({ host, port, user, password });
     await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
 
