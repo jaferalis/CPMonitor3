@@ -7,6 +7,7 @@ const errorHandler = require('_middleware/error-handler');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static(process.cwd()+"//CPMonitor//dist//CPMonitor//"));
 
 // api routes
 app.use('/users', require('./users/users.controller'));
