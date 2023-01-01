@@ -23,7 +23,7 @@ async function create(params) {
     //     throw 'Email "' + params.email + '" is already registered';
     // }
 
-    const device = new db.Operators(params);
+    const device = new db.Operators.create(params);
     
     // hash password
     // operator.passwordHash = await bcrypt.hash(params.password, 10);

@@ -23,7 +23,7 @@ async function create(params) {
         throw 'Email "' + params.email + '" is already registered';
     }
 
-    const user = new db.User(params);
+    const user = new db.User.create(params);
     
     // hash password
     user.passwordHash = await bcrypt.hash(params.password, 10);

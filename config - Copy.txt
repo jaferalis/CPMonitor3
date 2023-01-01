@@ -7,3 +7,13 @@
         "database": "CPMonitor"
     }
 }
+
+{
+    "database": {
+        "host": "127.0.0.1",
+        "port": 51649,
+        "user": "azure",
+        "password": "6#vWHD_$",
+        "database": "CPMonitor"
+    }
+}

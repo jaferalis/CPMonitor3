@@ -17,7 +17,7 @@ app.use('/operators', require('./operators/operators.controller'));
 app.use(errorHandler);
 
 app.get('/', (req,res) => {
-    res.sendFile(process.cwd()+"/CPMonitor/dist/CPMonitor/index.html")
+    res.sendFile(process.cwd()+"//CPMonitor//dist//CPMonitor/index.html")
   });
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 8080;

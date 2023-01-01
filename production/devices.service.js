@@ -19,8 +19,8 @@ async function getById(id) {
 
 async function create(params) {
     // validate
-
-    const device = new db.Devices(params);
+    //Need to change db.Devices(params) to db.Devices.create(params)
+    const device = new db.Devices.create(params);
     
     // save user
     await device.save();
