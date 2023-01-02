@@ -205,24 +205,7 @@ export class DevicesComponent implements OnInit {
     return val;
   }
 
-  async getData() {
-    this.deviceService.startCPUDataMonitoring().subscribe((data) => {
-      this.data = data;
-      this.cpuvalue = this.data.data[0].values[0].value.toString();
-      this.writeSpeed = this.data.data[1].values[0].value.toString()
-    });
-    // setTimeout(()=>{
-    //     this.getData();
-    // }, 1000)
-  }
 
-  equip() {
-    alert("jafer equip");
-    const myTimeout = setTimeout(this.getData, 1000);
-  }
-  refresh(): void {
-    window.location.reload();
-  }
 
   deleteDevice() {
     // iterated thru the selected devices and delete one by one

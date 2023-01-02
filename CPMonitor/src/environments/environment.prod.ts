@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseurl: 'https://cpmonitor4.azurewebsites.net/'
+  
 };

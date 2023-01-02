@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { OperatorElement } from 'src/app/users/operators/operators.component';
-
-const BASE_URL = 'http://localhost:8080/operators'
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +18,17 @@ export class OperatorsService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.get<OperatorElement[]>(BASE_URL, httpOptions);
+    return this.http.get<OperatorElement[]>(environment.baseurl + 'operators', httpOptions);
 
   }
 
   create(body: any) {
     console.log(body);
-    return this.http.post(BASE_URL, body);
+    return this.http.post(environment.baseurl + 'operators', body);
   }
 
   delete(id: string) {
-    const url = 'http://localhost:8080/operators/';
+    const url =  environment.baseurl + 'operators/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -40,7 +39,7 @@ export class OperatorsService {
   }
 
   getById(id: string) {
-    const url = 'http://localhost:8080/operators/';
+    const url =  environment.baseurl + 'operators/';
     return this.http.get<OperatorElement>(`${url}${id}`);
   }
 
@@ -50,7 +49,7 @@ export class OperatorsService {
         'Content-Type': 'application/json'
       }),
     };
-    const url = 'http://localhost:8080/operators/';
+    const url =  environment.baseurl + 'operators/';
     return this.http.put<OperatorElement>(`${url}${id}`, body, httpOptions);
   }
 }

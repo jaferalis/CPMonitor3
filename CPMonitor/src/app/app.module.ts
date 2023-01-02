@@ -12,12 +12,8 @@ import { HomeComponent } from './home/home.component'
 
 
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent,HomeComponent],
   imports: [
     BrowserModule,
     MatSidenavModule,
@@ -32,7 +28,7 @@ import { HomeComponent } from './home/home.component'
     }),
     HttpClientModule
   ],
-  providers: [],
+  providers : [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

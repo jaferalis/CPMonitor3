@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './../environments/environment';
 
-
-const BASE_URL = 'http://localhost:8080/users'
 
 export interface UserElement {
   _id: string; // This alone is not shown in UI. But part of the record.
@@ -30,14 +29,14 @@ export class UsersService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.get<UserElement[]>(BASE_URL, httpOptions);
+    return this.http.get<UserElement[]>(environment.baseurl + 'users', httpOptions);
 
   }
 
   create(body: any) {
     console.log(body);
     //Overrid the userDate with the body data coming in
-    const url = 'http://localhost:8080/authusers/';
+    const url =  environment.baseurl + 'authusers/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -48,7 +47,7 @@ export class UsersService {
   }
 
   delete(id: string) {
-    const url = 'http://localhost:8080/authusers/';
+    const url =  environment.baseurl + 'authusers/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -59,7 +58,7 @@ export class UsersService {
   }
 
   getById(id: string) {
-    const url = 'http://localhost:8080/users/';
+    const url =  environment.baseurl + 'users/';
     return this.http.get<UserElement>(`${url}${id}`);
   }
 
@@ -69,7 +68,7 @@ export class UsersService {
         'Content-Type': 'application/json'
       }),
     };
-    const url = 'http://localhost:8080/authusers/';
+    const url = environment.baseurl + 'authusers/';
     return this.http.put(`${url}${id}`, body, httpOptions);
   }
 }

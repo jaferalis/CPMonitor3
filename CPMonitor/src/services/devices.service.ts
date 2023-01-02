@@ -3,8 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DeviceElement } from 'src/app/devices/devices.component';
 import {FormGroup,FormControl} from '@angular/forms';
+import { environment } from './../environments/environment';
 
-const baseUrl = 'http://localhost:8080/';
+
 interface value {
   timestamp: string;
   value: string | number | boolean;
@@ -41,28 +42,18 @@ export class DevicesService {
         'Access-Control-Allow-Origin':'*'
       })
     } 
-    return this.http.get<DeviceElement[]>('http://localhost:8080/devices',httpOptions);
-
-  }
-
-
-  startCPUDataMonitoring():Observable<DataResult>{
-    const url = 'http://localhost:4203/DataService/Data/Delta';
-    const cpuId =  "3cc0968f69b6460981cf5af36f677cb5";
-
-    const body=  '[{"variableId" : "3cc0968f69b6460981cf5af36f677cb5"},{"variableId": "fd29e7aa445a4fcdb385f95328da9dbe" }]';
-    return this.http.post<DataResult>(url,body);   
+    return this.http.get<DeviceElement[]>(environment.baseurl + 'devices',httpOptions);
 
   }
 
   createDevice(body:any){
-    const url = 'http://localhost:8080/devices';
+    const url =  environment.baseurl + 'devices';
     console.log(body);
     return this.http.post(url,body);
   }
 
   deleteDevice(id: string){
-    const url = 'http://localhost:8080/devices/';
+    const url = environment.baseurl + 'devices/';
     const httpOptions = {
       headers: new HttpHeaders({
           'Content-Type': 'application/json'
@@ -73,7 +64,7 @@ export class DevicesService {
   }
 
   getById(id: string) {
-    const url = 'http://localhost:8080/devices/';
+    const url = environment.baseurl + 'devices/';
     return this.http.get<DeviceElement>(`${url}${id}`);
 }
 
@@ -83,7 +74,7 @@ updateDevice(id: string,body:any){
         'Content-Type': 'application/json'
     }),
 };
-  const url = 'http://localhost:8080/devices/';
+  const url =  environment.baseurl + 'devices/';
   return this.http.put<DeviceElement>(`${url}${id}`,body,httpOptions);
 }
 

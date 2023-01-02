@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MachineElement } from 'src/app/users/machines/machines.component';
-
-
-
-const BASE_URL = 'http://localhost:8080/machines'
+import { environment } from './../environments/environment';
 
 
 @Injectable({
@@ -21,17 +18,17 @@ export class MachinesService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.get<MachineElement[]>(BASE_URL, httpOptions);
+    return this.http.get<MachineElement[]>(environment.baseurl + 'machines', httpOptions);
 
   }
 
   create(body: any) {
     console.log(body);
-    return this.http.post(BASE_URL, body);
+    return this.http.post(environment.baseurl + 'machines', body);
   }
 
   delete(id: string) {
-    const url = 'http://localhost:8080/machines/';
+    const url = environment.baseurl + 'machines/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -42,7 +39,7 @@ export class MachinesService {
   }
 
   getById(id: string) {
-    const url = 'http://localhost:8080/machines/';
+    const url = environment.baseurl + 'machines/';
     return this.http.get<MachineElement>(`${url}${id}`);
   }
 
@@ -52,7 +49,7 @@ export class MachinesService {
         'Content-Type': 'application/json'
       }),
     };
-    const url = 'http://localhost:8080/machines/';
+    const url = environment.baseurl + 'machines/';
     return this.http.put<MachineElement>(`${url}${id}`, body, httpOptions);
   }  
 }
