@@ -4,8 +4,7 @@ module.exports = model;
 
 function model(sequelize) {
     const attributes = {
-        _id: {type:DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true},
-        position: { type: DataTypes.INTEGER, allowNull: false, unique:true, autoIncrement:true },
+        _id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement:true, startAt:1},
         date: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW },
         machinename: { type: DataTypes.STRING, allowNull: false },
         machinetype: { type: DataTypes.STRING, allowNull: false },

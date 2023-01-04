@@ -27,7 +27,7 @@ export class MachinesService {
     return this.http.post(environment.baseurl + 'machines', body);
   }
 
-  delete(id: string) {
+  delete(id: number) {
     const url = environment.baseurl + 'machines/';
     const httpOptions = {
       headers: new HttpHeaders({
@@ -38,12 +38,12 @@ export class MachinesService {
     return this.http.delete<MachineElement>(delUrl, httpOptions);
   }
 
-  getById(id: string) {
+  getById(id: number) {
     const url = environment.baseurl + 'machines/';
     return this.http.get<MachineElement>(`${url}${id}`);
   }
 
-  update(id: string, body: any) {
+  update(id: number, body: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

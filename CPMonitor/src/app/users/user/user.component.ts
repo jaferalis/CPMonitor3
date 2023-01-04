@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/services/users.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user',
@@ -42,7 +42,6 @@ export class UserComponent implements OnInit {
     if (!this.isAddMode) {
       this.userService.getById(this.id)
         .subscribe(x => {
-         // alert(JSON.stringify(x));  
         //   Not sure why array[0] deos not work. I had to strip the box squar []s and make JSON object again
          let temp = JSON.stringify(x);
          temp = temp.substring(1,temp.length-1)       

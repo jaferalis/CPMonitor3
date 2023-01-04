@@ -202,8 +202,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onChangeCategory(event:any){
-   // alert(this.selectedGroup);
-  // this.machineTypeInit(this.dateStart, this.dateEnd, this.selectedGroup)
+
    this.machineTypeGroup();
    this.machineNameGroup();
    this.operatorTypeGroup();
@@ -281,7 +280,6 @@ export class DashboardComponent implements OnInit {
 
   onEndDateChange(){
    this.SelectEndDate.setHours(23, 59, 59, 999);
-   //alert( this.SelectEndDate.toISOString());
    this.machineTypeGroup();
    this.machineNameGroup();
    this.operatorTypeGroup();

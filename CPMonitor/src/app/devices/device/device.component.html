@@ -13,19 +13,9 @@
                 <mat-form-field class="example-form-field" appearance="fill">
                   <mat-label>Machine Name</mat-label>
                   <mat-select [(value)]="selectedName" formControlName="machinename">
-                    <mat-option value="Lathe-1">Lathe-1</mat-option>
-                    <mat-option value="Lathe-2">Lathe-2</mat-option>
-                    <mat-option value="Lathe-3">Lathe-3</mat-option>
-                    <mat-option value="Lathe-4">Lathe-4</mat-option>
-                    <mat-option value="CNC-1">CNC-1</mat-option>
-                    <mat-option value="CNC-2">CNC-2</mat-option>
-                    <mat-option value="VMC-1">VMC-1</mat-option>
-                    <mat-option value="VMC-2">VMC-2</mat-option>
-                    <mat-option value="VMC-3">VMC-3</mat-option>    
-                    <mat-option value="MITR">MITR</mat-option>        
-                    <mat-option value="Radial Drill">Radial Drill</mat-option>           
-                    <mat-option value="Jig Boring">Jig Boring</mat-option>
-                    <mat-option value="Milling">Milling</mat-option>                                        
+                    <mat-option *ngFor="let machinename of machinenames" [value]="machinename">
+                      {{machinename}}
+                    </mat-option>                                       
                   </mat-select>
                 </mat-form-field>
                 <!-- End of Machine Name field -->

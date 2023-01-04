@@ -32,6 +32,7 @@ export class DeviceComponent implements OnInit {
   remarks: string = "";
   operators:any;
   machinetypes:any;
+  machinenames:any;
 
 
   
@@ -63,8 +64,7 @@ export class DeviceComponent implements OnInit {
     private route: ActivatedRoute, private operatorService:OperatorsService, private machineService:MachinesService) { }
 
   ngOnInit(): void {
-    //  this.id = this.route.snapshot.params['id'];
-    //  alert("id:" + this.id);
+
     this.route.queryParams
       .subscribe(params => {
         this.id =params['Id'];

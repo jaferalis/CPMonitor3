@@ -50,7 +50,6 @@ export class MachineComponent implements OnInit {
     if (!this.isAddMode) {
       this.machinesService.getById(this.id)
         .subscribe(x => {
-         // alert(JSON.stringify(x));  
         //   Not sure why array[0] deos not work. I had to strip the box squar []s and make JSON object again
          let temp = JSON.stringify(x);
          temp = temp.substring(1,temp.length-1)       

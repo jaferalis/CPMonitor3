@@ -23,13 +23,13 @@ async function create(params) {
     //     throw 'Email "' + params.email + '" is already registered';
     // }
 
-    const device = new db.Operators.create(params);
+    const device = db.Operators.create(params);
     
     // hash password
     // operator.passwordHash = await bcrypt.hash(params.password, 10);
 
     // save operator
-    await device.save();
+    // await device.save();
 }
 
 async function update(id, params) {
@@ -43,7 +43,7 @@ async function update(id, params) {
 
 async function _delete(id) {
     const operator = await getOperator(id);
-    await operator.destroy();
+    await operator[0].destroy();
 }
 
 // helper functions

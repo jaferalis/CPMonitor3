@@ -20,10 +20,10 @@ async function getById(id) {
 async function create(params) {
     // validate
     //Need to change db.Devices(params) to db.Devices.create(params)
-    const device = new db.Devices.create(params);
+    const device = db.Devices.create(params);
     
     // save user
-    await device.save();
+    // await device.save();
 }
 
 async function update(id, params) {
@@ -36,7 +36,7 @@ async function update(id, params) {
 
 async function _delete(id) {
     const user = await getDevice(id);
-    await user.destroy();
+    await user[0].destroy();
 }
 
 // helper functions

@@ -23,13 +23,13 @@ async function create(params) {
     //     throw 'Email "' + params.email + '" is already registered';
     // }
 
-    const machine = new db.Machines.create(params);
+    const machine = db.Machines.create(params);
     
     // hash password
     // machine.passwordHash = await bcrypt.hash(params.password, 10);
 
     // save machine
-    await machine.save();
+    // await machine.save();
 }
 
 async function update(id, params) {
@@ -42,7 +42,7 @@ async function update(id, params) {
 
 async function _delete(id) {
     const machine = await getMachine(id);
-    await machine.destroy();
+    await machine[0].destroy();
 }
 
 // helper functions

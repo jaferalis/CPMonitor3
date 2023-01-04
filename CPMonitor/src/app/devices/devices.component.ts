@@ -19,9 +19,8 @@ import { ExportService } from 'src/services/export.service';
 
 
 export interface DeviceElement {
-  _id: string; // This alone is not shown in UI. But part of the record.
+  _id: number; // This alone is not shown in UI. But part of the record.
   date: Date;
-  position: number;
   machinename: string;
   machinetype: string;
   description: string;
@@ -53,7 +52,6 @@ interface DataResult {
 
 const ELEMENT_DATA: DeviceElement[]=[{
     "date": new Date('2024-07-21'),
-    "position": 7,
     "machinename": "L1",
     "machinetype": "M1",
     "description": "L1 description",
@@ -61,7 +59,7 @@ const ELEMENT_DATA: DeviceElement[]=[{
     "rawqty": 10,
     "achievedqty": 5,
     "remarks": "Dev5",
-    "_id": "6390978e945c67807f5299cb",
+    "_id": 1,
 
 }];
 

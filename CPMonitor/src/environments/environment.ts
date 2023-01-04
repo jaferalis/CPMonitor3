@@ -4,7 +4,8 @@
 
 export const  environment = {
   production: false,
-  baseurl: 'https://cpmonitor4.azurewebsites.net/'
+  // baseurl: 'https://cpmonitor4.azurewebsites.net/',
+  baseurl: 'https://localhost:8080/'
 };
 
 /*

@@ -52,7 +52,7 @@ export class DevicesService {
     return this.http.post(url,body);
   }
 
-  deleteDevice(id: string){
+  deleteDevice(id: number){
     const url = environment.baseurl + 'devices/';
     const httpOptions = {
       headers: new HttpHeaders({
@@ -63,12 +63,12 @@ export class DevicesService {
     return this.http.delete<DeviceElement>(delUrl, httpOptions);
   }
 
-  getById(id: string) {
+  getById(id: number) {
     const url = environment.baseurl + 'devices/';
     return this.http.get<DeviceElement>(`${url}${id}`);
 }
 
-updateDevice(id: string,body:any){
+updateDevice(id: number,body:any){
   const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'

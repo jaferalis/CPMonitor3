@@ -27,7 +27,7 @@ export class OperatorsService {
     return this.http.post(environment.baseurl + 'operators', body);
   }
 
-  delete(id: string) {
+  delete(id: number) {
     const url =  environment.baseurl + 'operators/';
     const httpOptions = {
       headers: new HttpHeaders({
@@ -38,12 +38,12 @@ export class OperatorsService {
     return this.http.delete<OperatorElement>(delUrl, httpOptions);
   }
 
-  getById(id: string) {
+  getById(id: number) {
     const url =  environment.baseurl + 'operators/';
     return this.http.get<OperatorElement>(`${url}${id}`);
   }
 
-  update(id: string, body: any) {
+  update(id: number, body: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

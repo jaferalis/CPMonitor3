@@ -18,18 +18,9 @@ async function getById(id) {
 }
 
 async function create(params) {
-    // validate
-    if (await db.User.findOne({ where: { email: params.email } })) {
-        throw 'Email "' + params.email + '" is already registered';
-    }
 
-    const user = new db.User.create(params);
+    db.User.create(params);
     
-    // hash password
-    user.passwordHash = await bcrypt.hash(params.password, 10);
-
-    // save user
-    await user.save();
 }
 
 async function update(id, params) {

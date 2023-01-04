@@ -11,8 +11,7 @@ import { ExportService } from 'src/services/export.service';
 
 
 export interface MachineElement {
-  _id: string; // This alone is not shown in UI. But part of the record.
-  position: number;
+  _id: number; // This alone is not shown in UI. But part of the record.
   machinename: string;
   machinetype: string;
   purchasedate: Date;
@@ -23,8 +22,7 @@ export interface MachineElement {
 
 
 const ELEMENT_DATA: MachineElement[]=[{
-  _id: "63933962f6d8aa632f5505ed", // This alone is not shown in UI. But part of the record.
-  position: 7,
+  _id: 1, // This alone is not shown in UI. But part of the record.
   machinename: "ABC",
   machinetype: "CNC",
   purchasedate: new Date('2024-07-21'),
@@ -109,7 +107,6 @@ export class MachinesComponent implements OnInit {
   edit() {
     // `${url}/${id}`
     for (let item of this.machineSelection.selected) {
-      alert("edite device" + item._id);
       this.machineservice.getById(item._id).subscribe((data) => {
         //send the data for the child form
         // this.router.navigateByUrl('devices/device?Id:${item._id}');

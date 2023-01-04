@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { ExportService } from 'src/services/export.service';
 
 export interface OperatorElement {
-  _id: string; // This alone is not shown in UI. But part of the record.
+  _id: number; // This alone is not shown in UI. But part of the record.
   position: number;
   name: string;
   joindate: Date;
@@ -23,7 +23,7 @@ const ELEMENT_DATA: OperatorElement[]=[{
   "position": 7,
   "name": "L1",
   "phonenumber": 12345678,
-  "_id": "6390978e945c67807f5299cb",
+  "_id": 1,
 
 }];
 
@@ -104,7 +104,6 @@ export class OperatorsComponent implements OnInit {
   edit() {
     // `${url}/${id}`
     for (let item of this.operatorSelection.selected) {
-      alert("edite device" + item._id);
       this.operatorService.getById(item._id).subscribe((data) => {
         //send the data for the child form
         // this.router.navigateByUrl('devices/device?Id:${item._id}');
@@ -147,6 +146,6 @@ export class OperatorsComponent implements OnInit {
   }
 
   searchThis(data:string){
-
+    this.dataSource.filter = data;
   }
 }

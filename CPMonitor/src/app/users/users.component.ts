@@ -80,7 +80,6 @@ export class UsersComponent implements OnInit {
   edit() {
     // `${url}/${id}`
     for (let item of this.userSelection.selected) {
-      alert("edite device" + item._id);
       this.userService.getById(item._id).subscribe((data) => {
         //send the data for the child form
         // this.router.navigateByUrl('devices/device?Id:${item._id}');
