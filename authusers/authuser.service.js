@@ -3,8 +3,8 @@
 const ManagementClient = require('auth0').ManagementClient;
 var auth0 = new ManagementClient({
   domain: 'serverlessjaf.auth0.com',
-  clientId: '3LTMUjQpdjHs2urxEVJ90jhxIuGUNXgG',  // API Explorer M2M application
-  clientSecret: 'kg8bADadqUk8XeuHeHMpFiNlWpy2Jx8ksTD50eDzoNsVnR9c3JikEomOctXcJZMV', 
+  clientId: '',  // API Explorer M2M application
+  clientSecret: '', 
   scope: "read:users create:users delete:users" ,
   audience: 'https://serverlessjaf.auth0.com/api/v2/',
   tokenProvider: {
