@@ -3,8 +3,8 @@
 const ManagementClient = require('auth0').ManagementClient;
 var auth0 = new ManagementClient({
   domain: 'serverlessjaf.auth0.com',
-  clientId: '',  // API Explorer M2M application
-  clientSecret: '', 
+  clientId: '3LTMUjQpdjHs2urxEVJ90jhxIuGUNXgG',  // API Explorer M2M application
+  clientSecret: 'kg8bADadqUk8XeuHeHMpFiNlWpy2Jx8ksTD50eDzoNsVnR9c3JikEomOctXcJZMV', 
   scope: "read:users create:users delete:users" ,
   audience: 'https://serverlessjaf.auth0.com/api/v2/',
   tokenProvider: {
@@ -32,15 +32,18 @@ module.exports = {
 
 
  async function create(userData) {
-    let userResp;
-    auth0.createUser(userData);
+    // let userResp;
+    // auth0.createUser(userData)
     //   .then(function (user) {
+    //     console.log(user);
     //     userResp = user;
     //   })
     //   .catch(function (err) {
     //     console.log(err);
+    //     userResp = err;
     //   });
     // return userResp;
+    await auth0.createUser(userData);
   }
 
   async function update(id, body) {

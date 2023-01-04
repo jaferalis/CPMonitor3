@@ -6,14 +6,36 @@ const Role = require('_helpers/role');
 const userService = require('../users/user.service');
 const authService = require('./authuser.service');
 
+
+
+const ManagementClient = require('auth0').ManagementClient;
+var auth0 = new ManagementClient({
+  domain: 'serverlessjaf.auth0.com',
+  clientId: '3LTMUjQpdjHs2urxEVJ90jhxIuGUNXgG',  // API Explorer M2M application
+  clientSecret: 'kg8bADadqUk8XeuHeHMpFiNlWpy2Jx8ksTD50eDzoNsVnR9c3JikEomOctXcJZMV', 
+  scope: "read:users create:users delete:users" ,
+  audience: 'https://serverlessjaf.auth0.com/api/v2/',
+  tokenProvider: {
+   enableCache: true,
+   cacheTTLInSeconds: 10
+ }
+});
+
 userData= {
     "connection": "Username-Password-Authentication",
-    "email": "abc1@hotmail.com",
+    "email": "abc@hotmail.com",
     "name": "ghi",
     "password": "secret",
     "email_verified": true,
     "verify_email": true
+};
+
+updateData= {
+
+    "email": "abc@hotmail.com",
+    "name": "ghi"
 }
+
 
 // routes
 
@@ -44,15 +66,11 @@ function create(req, res, next) {
     //Update the userData for auth0 and create it
     userData.email = req.body.email;
     userData.name = req.body.name ;
-    authService.create(userData)
-        .then(function() {
-          // res.json(user);
-
-           //req.body.userid = resp.user_id;
-            userService.create(req.body).then((user)=>{
-           //  res.json({ message: 'User created' });
-                // res.body = resp;
-                res.send(user)
+    auth0.createUser(userData)
+        .then(function(user) {
+           req.body.userid = user.user_id;
+            userService.create(req.body).then((user1)=>{
+              res.send(user);             
             })
         } )
         .catch(next);
@@ -60,18 +78,28 @@ function create(req, res, next) {
 
 function update(req, res, next) {
     //Update the userData for auth0 and send it
-    userData.name = res.body.name;
-    userData.email = res.body.email;
-    // pass the auth0 id here not the user id of DB
-    authService.update(req.params.id, userData)
-        .then(() => res.json({ message: 'User updated' }))
-        .catch(next);
+    let _id = "auth0|" + req.params.id;
+
+    auth0.updateUser({ id: _id }, req.body)
+      .then(function (user) {
+        userService.update(req.body).then(()=>{
+            res.send(user);             
+          })
+      })
+      .catch(next);   
+
 }
 
 function _delete(req, res, next) {
-    authService.delete(req.params.id)
-        .then(() => res.json({ message: 'User deleted' }))
-        .catch(next);
+    let _id = "auth0|" + req.params.id;
+    auth0.deleteUser({ id: _id })
+      .then(function (user) {
+        userService.delete(id).then(()=>res.json("User Deleted"))
+        res.send(user);
+      })
+      .catch(next);
+
+
 }
 
 // schema functions
