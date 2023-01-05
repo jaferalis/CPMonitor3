@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', 'position','name', 'joindate', 'email', 'role'];
+  displayedColumns: string[] = ['select', 'position','name', 'email', 'role'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
  userSelection = new SelectionModel<UserElement>(true, []);
@@ -44,8 +44,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.userService.get().subscribe(operators => {
-      this.users = operators;
+    this.userService.get().subscribe(usrs => {
+      this.users = usrs;
       this.dataSource.data= this.users;
     });      
   }

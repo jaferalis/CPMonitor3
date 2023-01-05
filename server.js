@@ -11,7 +11,7 @@ app.use(express.static(process.cwd()+"//CPMonitor//dist//CPMonitor//"));
 
 // api routes
 
-app.use('/authuser', require('./authusers/authuser.controller'));
+app.use('/authuser', require('./users/users.controller'));
 app.use('/devices', require('./production/devices.controller'));
 app.use('/machines', require('./machines/machines.controller'));
 app.use('/operators', require('./operators/operators.controller'));

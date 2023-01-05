@@ -23,7 +23,7 @@ userData= {
 
 updateData= {
 
-    "email": "abc@hotmail.com",
+    "connection": "Username-Password-Authentication",
     "name": "ghi"
 }
 
@@ -69,26 +69,45 @@ function create(req, res, next) {
 
 function update(req, res, next) {
     //Update the userData for auth0 and send it
-    let _id = "auth0|" + req.params.id;
+    //let _id = "auth0|" + req.params.id;
+    // get the user from the id
+    let _id = "";
+    userService.getById(req.params.id).then((user)=>{
+        console.log(user);
+        //get the auth0 id
+        _id = user.userid;
+       // res.send(user);
+       updateData.name = req.body.name;
+        auth0.updateUser({ id: _id }, updateData)
+        .then(function (user) {
+          userService.update(req.params.id, req.body).then(()=>{
+              res.send("user Updated");             
+            })
+        })
+        .catch(next);          
+    });
 
-    auth0.updateUser({ id: _id }, req.body)
-      .then(function (user) {
-        userService.update(req.body).then(()=>{
-            res.send(user);             
-          })
-      })
-      .catch(next);   
+ 
 
 }
 
 function _delete(req, res, next) {
-    let _id = "auth0|" + req.params.id;
-    auth0.deleteUser({ id: _id })
-      .then(function (user) {
-        userService.delete(id).then(()=>res.json("User Deleted"))
-        res.send(user);
-      })
-      .catch(next);
+   // let _id = "auth0|" + req.params.id;
+    let _id = "";
+    console.log(req.params.id);
+    userService.getById(req.params.id).then((user)=>{
+        //get the auth0 id
+        console.log(user);
+        _id = user.userid;
+        auth0.deleteUser({ id: _id })
+        .then(function (user) {
+          userService.delete(req.params.id).then(()=>res.json("User Deleted"))
+         // res.send(user);
+        })
+        .catch(next);        
+    });    
+    // console.log( "id for auth0:" + _id);
+
 
 
 }

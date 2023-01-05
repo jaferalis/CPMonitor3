@@ -5,10 +5,8 @@ import { environment } from './../environments/environment';
 
 
 export interface UserElement {
-  _id: string; // This alone is not shown in UI. But part of the record.
-  position: number;
+  _id: number; // This alone is not shown in UI. But part of the record.
   name: string;
-  joindate: Date;
   email: string;
   role: string
 
@@ -29,14 +27,14 @@ export class UsersService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.get<UserElement[]>(environment.baseurl + 'users', httpOptions);
+    return this.http.get<UserElement[]>(environment.baseurl + 'authuser', httpOptions);
 
   }
 
   create(body: any) {
     console.log(body);
     //Overrid the userDate with the body data coming in
-    const url =  environment.baseurl + 'authusers/';
+    const url =  environment.baseurl + 'authuser/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -46,8 +44,8 @@ export class UsersService {
   
   }
 
-  delete(id: string) {
-    const url =  environment.baseurl + 'authusers/';
+  delete(id: any) {
+    const url =  environment.baseurl + 'authuser/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -57,18 +55,18 @@ export class UsersService {
     return this.http.delete<UserElement>(delUrl, httpOptions);
   }
 
-  getById(id: string) {
-    const url =  environment.baseurl + 'users/';
+  getById(id: any) {
+    const url =  environment.baseurl + 'authuser/';
     return this.http.get<UserElement>(`${url}${id}`);
   }
 
-  update(id: string, body: any) {
+  update(id: any, body: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
-    const url = environment.baseurl + 'authusers/';
+    const url = environment.baseurl + 'authuser/';
     return this.http.put(`${url}${id}`, body, httpOptions);
   }
 }
