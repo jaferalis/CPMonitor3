@@ -13,17 +13,16 @@ export class UserComponent implements OnInit {
     id: any;
     isAddMode: boolean= false;
     value = 'Clear me';
-    name:string=""
+    name:string="";
+    email: string ="";
     phonenumber :number=0;
     utcdate:string="";
-    selectedRole: string= "";
+    selectedRole: string= "Manager";
 
 
     // Form builder code
     form = this.fb.group({
-      position: [''],
-      name: [''],
-      joindate: [new Date()] ,    
+      name: [''],  
       email: [''],
       role:['']
   
@@ -44,7 +43,7 @@ export class UserComponent implements OnInit {
         .subscribe(x => {
         //   Not sure why array[0] deos not work. I had to strip the box squar []s and make JSON object again
          let temp = JSON.stringify(x);
-         temp = temp.substring(1,temp.length-1)       
+        // temp = temp.substring(1,temp.length-1)       
           this.form.patchValue(JSON.parse(temp));
         });
     }       

@@ -87,6 +87,8 @@ export class DeviceComponent implements OnInit {
       // This gives the uniquer set of machine types removig duplicated if any in machines
       let unique = [...new Set(machines.map(machine => machine.machinetype))];
       this.machinetypes = unique;
+      let namelist = machines.map(machine => machine.machinename);
+      this.machinenames = namelist;
     }); 
     //get the operator names here and put in list
     this.operatorService.get().subscribe(operators => {
