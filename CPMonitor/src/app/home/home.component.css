@@ -35,7 +35,7 @@ html {
 }
 
 .circle-1 {
-  background: url('/assets/images/gantry-2.jpg') center no-repeat;
+  background: url('/assets/images/gantry-2.png') center no-repeat;
   background-size: cover;
   background-clip: content-box;
   border: 0.5rem dotted #a14b1a;
