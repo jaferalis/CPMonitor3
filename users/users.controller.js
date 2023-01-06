@@ -41,7 +41,9 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    userService.getAll()
+    const queryString = req.query;
+    console.log(queryString);
+    userService.getAll(queryString)
         .then(users => res.json(users))
         .catch(next);
 }

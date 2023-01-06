@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './../environments/environment';
+import { string } from 'joi';
 
 
 export interface UserElement {
@@ -13,21 +14,33 @@ export interface UserElement {
 }
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-
+  role: string="";
   constructor(private http: HttpClient) { }
 
-  get(): Observable<UserElement[]> {
-
+  get(email?:string): Observable<UserElement[]> {
+    alert("email in user service:" + email);
+    var url = environment.baseurl + 'authuser/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.get<UserElement[]>(environment.baseurl + 'authuser', httpOptions);
+    if (email === undefined || email === null) {
+     // do nothing
+     return this.http.get<UserElement[]>(url, httpOptions);
+    }
+    else{
+      url = url + "?email=" + email;
+      console.log("url with email:" + url);
+      return this.http.get<UserElement[]>(url, httpOptions);
+    }
+
+  //  return this.http.get<UserElement[]>(url, httpOptions);
 
   }
 
@@ -68,5 +81,13 @@ export class UsersService {
     };
     const url = environment.baseurl + 'authuser/';
     return this.http.put(`${url}${id}`, body, httpOptions);
+  }
+
+  setRole(role:string){
+    this.role = role;
+  }
+
+  getRole(): string{
+    return this.role;
   }
 }

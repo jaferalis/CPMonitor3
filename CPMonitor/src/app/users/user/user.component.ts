@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
 
     // Form builder code
     form = this.fb.group({
+      position: [''],
       name: [''],  
       email: [''],
       role:['']

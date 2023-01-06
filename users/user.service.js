@@ -9,8 +9,18 @@ module.exports = {
     delete: _delete
 };
 
-async function getAll() {
-    return await db.User.findAll();
+async function getAll(queryString) {
+    if (Object.keys(queryString).length === 0)
+    {
+        return await db.User.findAll();
+    }
+    else
+    {
+        return await db.User.findOne({
+            where:  queryString
+        });
+    }
+    
 }
 
 async function getById(id) {
@@ -25,17 +35,6 @@ async function create(params) {
 
 async function update(id, params) {
     const user = await getUser(id);
-
-    // validate
-    const emailChanged = params.email && user.email !== params.email;
-    if (emailChanged && await db.User.findOne({ where: { email: params.email } })) {
-        throw 'Email "' + params.email + '" is already registered';
-    }
-
-    // hash password if it was entered
-    if (params.password) {
-        params.passwordHash = await bcrypt.hash(params.password, 10);
-    }
 
     // copy params to user and save
     Object.assign(user, params);
