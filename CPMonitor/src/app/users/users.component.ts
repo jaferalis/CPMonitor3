@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { UsersService, UserElement} from 'src/services/users.service';
 import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
+import { ExportService } from 'src/services/export.service';
 
 @Component({
   selector: 'app-users',
@@ -36,7 +37,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  constructor(private userService: UsersService , public router: Router) {
+  constructor(private userService: UsersService ,private exportService: ExportService,  public router: Router) {
     this.dataSource.paginator = this.paginator;
     this.users = [];
    }
@@ -44,9 +45,13 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  
     this.userService.get().subscribe(usrs => {
-      this.users = usrs;
-      this.dataSource.data= this.users;
+      if (usrs.length > 0){
+        this.users = usrs;
+        this.dataSource.data= this.users;
+      }
+
     });      
   }
 
@@ -90,11 +95,13 @@ export class UsersComponent implements OnInit {
   }
 
   exportexcel(){
-
+    this.exportService.exportexcel();
+  
   }
 
   exportpdf(){
-
+    this.exportService.exportpdf();
+  
   }
 
   copyData2() {
@@ -118,7 +125,7 @@ export class UsersComponent implements OnInit {
   }
 
   searchThis(data:string){
-
-  }  
+    this.dataSource.filter = data;
+  } 
 
 }

@@ -9,6 +9,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import {  HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component'
+import { CommonModule } from '@angular/common';
 
 
 
@@ -16,6 +17,7 @@ import { HomeComponent } from './home/home.component'
   declarations: [AppComponent,HomeComponent],
   imports: [
     BrowserModule,
+    CommonModule,
     MatSidenavModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -26,7 +28,7 @@ import { HomeComponent } from './home/home.component'
       clientId: 'lbhTLMG4BYx3e6C5jRqWFHVJq6F0o4BJ',
       redirectUri: window.location.origin
     }),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers : [],
   bootstrap: [AppComponent]

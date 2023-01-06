@@ -21,7 +21,7 @@
 
                   <!-- For Join date of OPerator field -->
                   <mat-form-field appearance="fill">
-                    <mat-label>Choose a date</mat-label>
+                    <mat-label>Choose a Joining date</mat-label>
                     <input matInput [matDatepicker]="picker" formControlName="joindate"  (dateChange)="onDateChange()">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -47,7 +47,7 @@
       </mat-grid-list>
   
       <button type="submit" mat-raised-button color="primary" class="buttonspace">Submit</button>
-      <button  mat-raised-button color="warn" class="buttonspace">Clear</button>   
+      <button  mat-raised-button color="warn" class="buttonspace" (click)="this.router.navigateByUrl('/users/operators');">Cancel</button>   
   </form>
   
   </div>

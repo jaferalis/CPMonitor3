@@ -286,7 +286,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onStartDateChange(){
-    this.SelectEndDate.setHours(0, 0, 0, 0);
+    this.SelectStartDate.setHours(0, 0, 0, 0);
     this.machineTypeGroup();
     this.machineNameGroup();
     this.operatorTypeGroup();

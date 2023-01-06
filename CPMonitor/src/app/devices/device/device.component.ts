@@ -60,7 +60,7 @@ export class DeviceComponent implements OnInit {
   value = 'Clear me';
   isAddMode = false;
   id: any;
-  constructor(private deviceService: DevicesService, private fb: FormBuilder, private router: Router,
+  constructor(private deviceService: DevicesService, private fb: FormBuilder, public router: Router,
     private route: ActivatedRoute, private operatorService:OperatorsService, private machineService:MachinesService) { }
 
   ngOnInit(): void {

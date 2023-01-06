@@ -16,7 +16,7 @@ async function getAll(queryString) {
     }
     else
     {
-        return await db.User.findOne({
+        return await db.User.findAll({
             where:  queryString
         });
     }

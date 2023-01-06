@@ -37,7 +37,7 @@ export class MachineComponent implements OnInit {
    
     });
     // End of form builder code    
-  constructor(private machinesService: MachinesService,private fb: FormBuilder, private router: Router,
+  constructor(private machinesService: MachinesService,private fb: FormBuilder, public router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {

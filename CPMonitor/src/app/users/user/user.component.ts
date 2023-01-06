@@ -29,7 +29,7 @@ export class UserComponent implements OnInit {
   
     });
     // End of form builder code    
-  constructor(private userService: UsersService,private fb: FormBuilder, private router: Router,
+  constructor(private userService: UsersService,private fb: FormBuilder, public router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {

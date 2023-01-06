@@ -31,7 +31,7 @@ export class OperatorComponent implements OnInit {
 
 
     //End definition of variables
-  constructor(private operatorService: OperatorsService,private fb: FormBuilder, private router: Router,
+  constructor(private operatorService: OperatorsService,private fb: FormBuilder, public router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {

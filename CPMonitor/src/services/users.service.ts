@@ -20,10 +20,11 @@ export interface UserElement {
 })
 export class UsersService {
   role: string="";
+  isManager: boolean= false;
+  
   constructor(private http: HttpClient) { }
 
   get(email?:string): Observable<UserElement[]> {
-    alert("email in user service:" + email);
     var url = environment.baseurl + 'authuser/';
     const httpOptions = {
       headers: new HttpHeaders({
@@ -85,9 +86,20 @@ export class UsersService {
 
   setRole(role:string){
     this.role = role;
+    if (this.role === "Manager"){
+      this.isManager = true;
+    }
+    else
+    {
+      this.isManager = false;
+    }
   }
 
   getRole(): string{
     return this.role;
+  }
+
+  isRoleManager():boolean{
+    return this.isManager
   }
 }

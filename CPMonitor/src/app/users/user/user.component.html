@@ -31,7 +31,6 @@
                     <mat-select [(value)]="selectedRole" formControlName="role">
                       <mat-option value="Manager">Manager</mat-option>
                       <mat-option value="User">User</mat-option>
-                      <mat-option value="Operator">Operator</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <!-- End of email field -->  
@@ -43,7 +42,7 @@
         
       </mat-grid-list> -->
       <button type="submit" mat-raised-button color="primary" class="buttonspace">Submit</button>
-      <button  mat-raised-button color="warn" class="buttonspace">Clear</button>      
+      <button  mat-raised-button color="warn" class="buttonspace" (click)="this.router.navigateByUrl('/users');">Cancel</button>      
   </form>
   
   </div>

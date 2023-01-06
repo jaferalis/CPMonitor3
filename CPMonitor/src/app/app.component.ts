@@ -15,6 +15,7 @@ export class AppComponent {
   isAuthenticated: boolean =false;
   opened:boolean= true;
   homeOnly = false;
+  isManager = true;
 
   constructor(private auth0: AuthService, public router: Router,private themeService: ThemeService, private userService:UsersService){
     auth0.isAuthenticated$.subscribe(result=>{
@@ -25,10 +26,13 @@ export class AppComponent {
         //authentication get the user
         auth0.getUser().subscribe(user=>{
           console.log(user?.email);
-       
-           userService.get("jafer@cp.com").subscribe(usr=>{
-            alert(usr);
-            console.log(usr);
+           userService.get(user?.email).subscribe(usr=>{
+            if(usr.length > 0)
+            {
+              userService.setRole(usr[0].role);
+              this.isManager = userService.isRoleManager();
+            }
+           
            });
         });
                
@@ -41,7 +45,7 @@ export class AppComponent {
     this.opened =!this.opened;
   }
   toggleHome(){
-    alert("home")
+
     this.homeOnly = false;
   }
 

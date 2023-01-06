@@ -11,7 +11,7 @@
   <app-header (newItemEvent)="toggleMenu()"></app-header>
   <mat-drawer-container class="app-container">
     <mat-drawer mode="side" opened={{opened}}>
-      <app-sidebar></app-sidebar>
+      <app-sidebar [isRoleManager] ="isManager==true" ></app-sidebar>
     </mat-drawer>
     <mat-drawer-content style="width:auto ; height:95%; border-color: brown; border: 5px;"  ><router-outlet ></router-outlet></mat-drawer-content>
   </mat-drawer-container>
