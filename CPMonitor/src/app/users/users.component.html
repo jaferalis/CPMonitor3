@@ -12,10 +12,10 @@
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"  
             (click)="this.router.navigateByUrl('users/user')">Add
         </button>
-        <!-- <button mat-raised-button color="accent"
+        <button mat-raised-button color="accent"
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
             [disabled]=false (click)="edit()">Edit
-        </button> -->
+        </button>
 
         <button mat-raised-button color="accent"
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
@@ -56,12 +56,7 @@
                 </td>
             </ng-container>
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
-                <td mat-cell *matCellDef="let element"> {{element._id}} </td>
-            </ng-container>
-            <!-- End Position Column -->
+
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">

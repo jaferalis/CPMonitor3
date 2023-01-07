@@ -7,7 +7,7 @@ import { UsersService, UserElement} from 'src/services/users.service';
 import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { ExportService } from 'src/services/export.service';
-import { number } from 'joi';
+// import { number } from 'joi';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +16,7 @@ import { number } from 'joi';
 })
 export class UsersComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', 'position','name', 'email', 'role'];
+  displayedColumns: string[] = ['select', 'email', 'name', 'role'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
  userSelection = new SelectionModel<UserElement>(true, []);
@@ -80,8 +80,8 @@ export class UsersComponent implements OnInit {
   delete() {
     // iterated thru the selected devices and delete one by one
     for (let item of this.userSelection.selected) {
-      console.log(item._id);
-      this.userService.delete(item._id).subscribe((data) => {
+      //console.log(item._id);
+      this.userService.delete(item.email).subscribe((data) => {
         window.location.reload();
       });
     }
@@ -90,10 +90,10 @@ export class UsersComponent implements OnInit {
   edit() {
     // `${url}/${id}`
     for (let item of this.userSelection.selected) {
-      this.userService.getById(item._id).subscribe((data) => {
+      this.userService.getById(item.email).subscribe((data) => {
         //send the data for the child form
         // this.router.navigateByUrl('devices/device?Id:${item._id}');
-        this.router.navigateByUrl('users/user?Id=' + item._id);
+        this.router.navigateByUrl('users/user?email=' + item.email);
       });
     }
 

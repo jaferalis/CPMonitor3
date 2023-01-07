@@ -34,23 +34,23 @@ async function create(params) {
     
 }
 
-async function update(id, params) {
-    const user = await getUser(id);
+async function update(email, params) {
+    const user = await getUser(email);
 
     // copy params to user and save
     Object.assign(user, params);
     await user.save();
 }
 
-async function _delete(id) {
-    const user = await getUser(id);
+async function _delete(email) {
+    const user = await getUser(email);
     await user.destroy();
 }
 
 // helper functions
 
-async function getUser(id) {
-    const user = await db.User.findByPk(id);
+async function getUser(email) {
+    const user = await db.User.findByPk(email);
     if (!user) throw 'User not found';
     return user;
 }

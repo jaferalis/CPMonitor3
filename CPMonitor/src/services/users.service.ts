@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './../environments/environment';
-import { string } from 'joi';
+// import { string } from 'joi';
 
 
 export interface UserElement {
-  _id: number; // This alone is not shown in UI. But part of the record.
-  name: string;
+  // _id: number; // This alone is not shown in UI. But part of the record.
   email: string;
+  name: string;
   role: string
 
 }
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -58,30 +56,30 @@ export class UsersService {
   
   }
 
-  delete(id: any) {
+  delete(email: any) {
     const url =  environment.baseurl + 'authuser/';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
-    let delUrl = url + id;
+    let delUrl = url + email;
     return this.http.delete<UserElement>(delUrl, httpOptions);
   }
 
-  getById(id: any) {
+  getById(email: any) {
     const url =  environment.baseurl + 'authuser/';
-    return this.http.get<UserElement>(`${url}${id}`);
+    return this.http.get<UserElement>(`${url}${email}`);
   }
 
-  update(id: any, body: any) {
+  update(email: any, body: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
     };
     const url = environment.baseurl + 'authuser/';
-    return this.http.put(`${url}${id}`, body, httpOptions);
+    return this.http.put(`${url}${email}`, body, httpOptions);
   }
 
   setRole(role:string){

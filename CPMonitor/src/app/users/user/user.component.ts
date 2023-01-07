@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
 
     // Form builder code
     form = this.fb.group({
-      position: [''],
       name: [''],  
       email: [''],
       role:['']
@@ -35,12 +34,12 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
-        this.id =params['Id'];
+        this.email =params['email'];
       }
     );
-    this.isAddMode = !this.id;
+    this.isAddMode = !this.email;
     if (!this.isAddMode) {
-      this.userService.getById(this.id)
+      this.userService.getById(this.email)
         .subscribe(x => {
         //   Not sure why array[0] deos not work. I had to strip the box squar []s and make JSON object again
          let temp = JSON.stringify(x);
@@ -59,7 +58,7 @@ export class UserComponent implements OnInit {
       this.router.navigateByUrl('/users');
     });
     else{
-      this.userService.update(this.id,this.form.value).subscribe(data=>{
+      this.userService.update(this.email,this.form.value).subscribe(data=>{
       this.router.navigateByUrl('/users');
       });
     }

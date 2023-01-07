@@ -31,11 +31,11 @@ updateData= {
 // routes
 
 router.get('/', getAll);
-router.get('/:id', getById);
+router.get('/:email', getById);
 router.get('/count/count',getCount);
 router.post('/',  create);
-router.put('/:id', update);
-router.delete('/:id', _delete);
+router.put('/:email', update);
+router.delete('/:email', _delete);
 
 
 module.exports = router;
@@ -51,7 +51,7 @@ function getAll(req, res, next) {
 }
 
 function getById(req, res, next) {
-    userService.getById(req.params.id)
+    userService.getById(req.params.email)
         .then(user => res.json(user))
         .catch(next);
 }
@@ -76,7 +76,7 @@ function update(req, res, next) {
     //let _id = "auth0|" + req.params.id;
     // get the user from the id
     let _id = "";
-    userService.getById(req.params.id).then((user)=>{
+    userService.getById(req.params.email).then((user)=>{
         console.log(user);
         //get the auth0 id
         _id = user.userid;
@@ -84,8 +84,8 @@ function update(req, res, next) {
        updateData.name = req.body.name;
         auth0.updateUser({ id: _id }, updateData)
         .then(function (user) {
-          userService.update(req.params.id, req.body).then(()=>{
-              res.send("user Updated");             
+          userService.update(req.params.email, req.body).then(()=>{
+              res.json("user Updated");             
             })
         })
         .catch(next);          
@@ -98,14 +98,14 @@ function update(req, res, next) {
 function _delete(req, res, next) {
    // let _id = "auth0|" + req.params.id;
     let _id = "";
-    console.log(req.params.id);
-    userService.getById(req.params.id).then((user)=>{
+    console.log(req.params.email);
+    userService.getById(req.params.email).then((user)=>{
         //get the auth0 id
         console.log(user);
         _id = user.userid;
         auth0.deleteUser({ id: _id })
         .then(function (user) {
-          userService.delete(req.params.id).then(()=>res.json("User Deleted"))
+          userService.delete(req.params.email).then(()=>res.json("User Deleted"))
          // res.send(user);
         })
         .catch(next);        
@@ -123,28 +123,28 @@ function getCount(req, res, next) {
 }
 // schema functions
 
-function createSchema(req, res, next) {
-    const schema = Joi.object({
-        title: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required(),
-        email: Joi.string().email().required(),
-        password: Joi.string().min(6).required(),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).required()
-    });
-    validateRequest(req, next, schema);
-}
+// function createSchema(req, res, next) {
+//     const schema = Joi.object({
+//         title: Joi.string().required(),
+//         firstName: Joi.string().required(),
+//         lastName: Joi.string().required(),
+//         role: Joi.string().valid(Role.Admin, Role.User).required(),
+//         email: Joi.string().email().required(),
+//         password: Joi.string().min(6).required(),
+//         confirmPassword: Joi.string().valid(Joi.ref('password')).required()
+//     });
+//     validateRequest(req, next, schema);
+// }
 
-function updateSchema(req, res, next) {
-    const schema = Joi.object({
-        title: Joi.string().empty(''),
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
-        role: Joi.string().valid(Role.Admin, Role.User).empty(''),
-        email: Joi.string().email().empty(''),
-        password: Joi.string().min(6).empty(''),
-        confirmPassword: Joi.string().valid(Joi.ref('password')).empty('')
-    }).with('password', 'confirmPassword');
-    validateRequest(req, next, schema);
-}
+// function updateSchema(req, res, next) {
+//     const schema = Joi.object({
+//         title: Joi.string().empty(''),
+//         firstName: Joi.string().empty(''),
+//         lastName: Joi.string().empty(''),
+//         role: Joi.string().valid(Role.Admin, Role.User).empty(''),
+//         email: Joi.string().email().empty(''),
+//         password: Joi.string().min(6).empty(''),
+//         confirmPassword: Joi.string().valid(Joi.ref('password')).empty('')
+//     }).with('password', 'confirmPassword');
+//     validateRequest(req, next, schema);
+// }
