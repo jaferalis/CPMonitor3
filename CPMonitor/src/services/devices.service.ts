@@ -78,4 +78,18 @@ updateDevice(id: number,body:any){
   return this.http.put<DeviceElement>(`${url}${id}`,body,httpOptions);
 }
 
+getCount():Observable<any>{
+  const url = environment.baseurl + 'devices/count/count';
+  // this.http.get<{ count: number }>(url).subscribe(data => {
+  //   alert("from getcount in angu service:"  + data);
+  //   this.count = data.count;
+  // });
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    })
+  }
+  return this.http.get<{count: number}>(url, httpOptions);
+}
+
 }

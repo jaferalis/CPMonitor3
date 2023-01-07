@@ -6,7 +6,8 @@ module.exports = {
     getById,
     create,
     update,
-    delete: _delete
+    delete: _delete,
+    getCount
 };
 
 async function getAll(queryString) {
@@ -29,7 +30,7 @@ async function getById(id) {
 
 async function create(params) {
 
-    db.User.create(params);
+    await db.User.create(params);
     
 }
 
@@ -52,4 +53,9 @@ async function getUser(id) {
     const user = await db.User.findByPk(id);
     if (!user) throw 'User not found';
     return user;
+}
+
+async function getCount() {
+    const count = await db.User.count();
+    return count;
 }

@@ -7,6 +7,7 @@ import { UsersService, UserElement} from 'src/services/users.service';
 import { MatFormField } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { ExportService } from 'src/services/export.service';
+import { number } from 'joi';
 
 @Component({
   selector: 'app-users',
@@ -20,7 +21,7 @@ export class UsersComponent implements OnInit {
   
  userSelection = new SelectionModel<UserElement>(true, []);
  users: UserElement[];
-
+ records: Number=0;
   dataSource = new MatTableDataSource<UserElement>();
 
   @ViewChild(MatPaginator, {static: false})
@@ -45,14 +46,18 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  
-    this.userService.get().subscribe(usrs => {
-      if (usrs.length > 0){
-        this.users = usrs;
-        this.dataSource.data= this.users;
+    this.userService.getCount().subscribe((data) =>{
+      this.records = Number(data.count) ;
+      if (this.records > 0){
+        this.userService.get().subscribe(usrs => {
+          if (usrs.length > 0){
+            this.users = usrs;
+            this.dataSource.data= this.users;
+          }
+        });        
       }
+    });
 
-    });      
   }
 
 // Table check box selection

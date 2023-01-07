@@ -84,6 +84,9 @@ export class DevicesComponent implements OnInit {
   writeSpeed: String = "";
   searchword: String =""
   res:any;
+  records: Number =0;
+  rawqty: Number =0
+  achievedqty:Number=0;
 
   dataSource = new MatTableDataSource<DeviceElement>();
   //dataSource :DeviceElement[];
@@ -128,13 +131,20 @@ export class DevicesComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.deviceService.getDevices().subscribe(devs => {
-      this.devices = devs;
-      this.dataSource.data= this.devices;
-      console.log("DEVS:" + JSON.stringify(devs));
-      this.res = alasql('SELECT  SUM(rawqty) AS rawqty, SUM(achievedqty) AS achievedqty FROM ?', [devs]);
-      console.log("Result" + JSON.stringify(this.res));
-    });
+    this.deviceService.getCount().subscribe((data)=>{
+        this.records = Number(data.count);
+        if (this.records > 0){
+          this.deviceService.getDevices().subscribe(devs => {
+            this.devices = devs;
+            this.dataSource.data= this.devices;
+            console.log("DEVS:" + JSON.stringify(devs));
+            this.res = alasql('SELECT  SUM(rawqty) AS rawqty, SUM(achievedqty) AS achievedqty FROM ?', [devs]);
+            console.log("Result" + JSON.stringify(this.res));
+            this.rawqty =this.res[0].rawqty;
+            this.achievedqty = this.res[0].achievedqty;
+          });
+        }
+    })
 
     // this.deviceService.startCPUDataMonitoring().subscribe((data)=>{
 

@@ -3,6 +3,7 @@ const db = require('_helpers/db');
 
 module.exports = {
     getAll,
+    getCount,
     getById,
     create,
     update,
@@ -46,4 +47,9 @@ async function getDevice(id) {
      device.push(await db.Devices.findByPk(id));
     if (!device) throw 'User not found';
     return device;
+}
+
+async function getCount() {
+    const count = await db.Devices.count();
+    return count;
 }

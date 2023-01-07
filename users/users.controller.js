@@ -32,9 +32,11 @@ updateData= {
 
 router.get('/', getAll);
 router.get('/:id', getById);
+router.get('/count/count',getCount);
 router.post('/',  create);
 router.put('/:id', update);
 router.delete('/:id', _delete);
+
 
 module.exports = router;
 
@@ -114,6 +116,11 @@ function _delete(req, res, next) {
 
 }
 
+function getCount(req, res, next) {
+   userService.getCount().then(count=>{
+        res.json( {count} );
+    });
+}
 // schema functions
 
 function createSchema(req, res, next) {

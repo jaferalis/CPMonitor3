@@ -21,7 +21,7 @@ export interface UserElement {
 export class UsersService {
   role: string="";
   isManager: boolean= false;
-  
+  count: number=0;
   constructor(private http: HttpClient) { }
 
   get(email?:string): Observable<UserElement[]> {
@@ -101,5 +101,19 @@ export class UsersService {
 
   isRoleManager():boolean{
     return this.isManager
+  }
+
+  getCount():Observable<any>{
+    const url = environment.baseurl + 'authuser/count/count';
+    // this.http.get<{ count: number }>(url).subscribe(data => {
+    //   alert("from getcount in angu service:"  + data);
+    //   this.count = data.count;
+    // });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.get<{count: number}>(url, httpOptions);
   }
 }

@@ -18,18 +18,11 @@ async function getById(id) {
 }
 
 async function create(params) {
-    // validate
-    // if (await db.Operators.findOne({ where: { email: params.email } })) {
-    //     throw 'Email "' + params.email + '" is already registered';
-    // }
+
 
     const device = db.Operators.create(params);
     
-    // hash password
-    // operator.passwordHash = await bcrypt.hash(params.password, 10);
 
-    // save operator
-    // await device.save();
 }
 
 async function update(id, params) {
