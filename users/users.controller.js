@@ -17,8 +17,8 @@ userData= {
     "email": "abc@hotmail.com",
     "name": "ghi",
     "password": "secret",
-    "email_verified": true,
-    "verify_email": true
+    "email_verified": false,
+     "verify_email": false
 };
 
 updateData= {

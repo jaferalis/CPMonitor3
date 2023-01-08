@@ -5,7 +5,7 @@
     background-color: rgb(232, 236, 238);
   }
   
-  .flex-container > div {
+  /* .flex-container > div {
     background-color: #E089AB;
     width: 250px;
     margin: 10px;
@@ -14,7 +14,7 @@
     font-size: 20px;
     border-radius: 10px;
     margin: 0 auto;
-  }
+  } */
 
 
 section {
@@ -63,11 +63,11 @@ table {
     margin: 0 auto; ; /* margin: 0 auto;  This will center the table */
   }
 
-.mat-header-cell {
+/* .mat-header-cell {
   background: #E089AB;
   font-size:medium;
   font-weight: bold;
-}
+} */
 
 /* .fill-remaining-space{
   flex: 1 1 auto

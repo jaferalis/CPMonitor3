@@ -25,7 +25,12 @@ export class AppComponent {
       else{
         //authentication get the user
         auth0.getUser().subscribe(user=>{
+          if(!user?.email_verified){
+            auth0.loginWithRedirect();
+          }          
           console.log(user?.email);
+          console.log("email verified" + user?.email_verified);
+
            userService.get(user?.email).subscribe(usr=>{
             if(usr.length > 0)
             {

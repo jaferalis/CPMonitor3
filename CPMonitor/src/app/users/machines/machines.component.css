@@ -17,11 +17,11 @@
     vertical-align: middle;
   }
 
-  .mat-header-cell {
+  /* .mat-header-cell {
     background: #E089AB;
     font-size:medium;
     font-weight: bold;
-  }
+  } */
 
   .table-container {
     margin-top: 10px;

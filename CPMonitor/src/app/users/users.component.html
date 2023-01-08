@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-toolbar style="background-color:#E089AB">
+    <mat-toolbar class="mat-tool-bar">
         <span class="fill-remaining-space"></span>
         <span>User Information</span>
         <span class="fill-remaining-space"></span>
@@ -8,16 +8,16 @@
     <!-- CRUD Buttons -->
     <div>
         <!-- <h2 style="display:inline-block; margin-left:10px">Device Health</h2> -->
-        <button mat-raised-button color="accent"
+        <button mat-raised-button [ngClass]="'mat-raised-but'"
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"  
             (click)="this.router.navigateByUrl('users/user')">Add
         </button>
-        <button mat-raised-button color="accent"
+        <button mat-raised-button [ngClass]="'mat-raised-but'"
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
             [disabled]=false (click)="edit()">Edit
         </button>
 
-        <button mat-raised-button color="accent"
+        <button mat-raised-button [ngClass]="'mat-raised-but'"
             style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
             [disabled]=false (click)="delete()">Delete
         </button>
@@ -25,10 +25,10 @@
     </div>
     <!-- Leave a gap here -->
     <div class="example-button-row">
-        <button mat-raised-button color="accent" style="margin-right: 10px;" [cdkCopyToClipboard]="copyData2()"
+        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" [cdkCopyToClipboard]="copyData2()"
             (click)="copyData2()">Copy</button>
-        <button mat-raised-button color="accent" style="margin-right: 10px;" (click)="exportexcel()">Excel</button>
-        <button mat-raised-button color="accent" style="margin-right: 10px;" (click)="exportpdf()">PDF</button>
+        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" (click)="exportexcel()">Excel</button>
+        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" (click)="exportpdf()">PDF</button>
         <br>
         <br>
         <mat-form-field floatLabel="never">
