@@ -6,7 +6,8 @@ const Role = require('_helpers/role');
 const userService = require('../users/user.service');
 // const authService = require('./authuser.service');
 const authconfig = require('auth.json');
-
+const jwtService = require('../authusers/auth.controller');
+const verifyJWT = require('../authusers/auth.controller');
 
 
 const ManagementClient = require('auth0').ManagementClient;
@@ -18,7 +19,7 @@ userData= {
     "name": "ghi",
     "password": "secret",
     "email_verified": false,
-     "verify_email": false
+     "verify_email": true
 };
 
 updateData= {

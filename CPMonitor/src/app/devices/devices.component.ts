@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort'; 
+import { MatSort } from '@angular/material/sort';
 import { ExportService } from 'src/services/export.service';
 
 
@@ -154,6 +154,7 @@ export class DevicesComponent implements OnInit {
     //   this.getData();
     // }, 1000);
   }
+
 
   // Table check box selection
 

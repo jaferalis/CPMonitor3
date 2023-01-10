@@ -3,6 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.auth0.logout();
+    this.auth0.logout({
+      returnTo: environment.baseurl // Specify the URL to which the user should be redirected after logging out
+    });
   }
 
   getUserName(){

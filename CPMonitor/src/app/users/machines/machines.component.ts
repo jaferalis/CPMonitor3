@@ -39,7 +39,7 @@ const ELEMENT_DATA: MachineElement[]=[{
 })
 export class MachinesComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'position','machinename', 'machinetype', 'purchasedate','vendor','vendorphone', 'amcrenewal'];
+  displayedColumns: string[] = ['select', '_id','machinename', 'machinetype', 'purchasedate','vendor','vendorphone', 'amcrenewal'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
   machineSelection = new SelectionModel<MachineElement>(true, []);
@@ -77,6 +77,7 @@ export class MachinesComponent implements OnInit {
   }
 
   
+
   // Table check box selection
 
 

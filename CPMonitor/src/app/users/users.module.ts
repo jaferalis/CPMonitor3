@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MachinesComponent } from './machines/machines.component';
 import { MachineComponent } from './machine/machine.component';
 import { UserComponent } from './user/user.component';
+import { MatSortModule } from '@angular/material/sort'; 
 // import { Auth0Service } from 'src/services/auth0.service';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { UserComponent } from './user/user.component';
     MatFormFieldModule,
     MatInputModule,
     ClipboardModule,
+    MatSortModule,
     MatIconModule,FormsModule,ReactiveFormsModule,MatSelectModule,MatDatepickerModule,MatGridListModule,MatNativeDateModule
   ],
   providers: [],

@@ -34,7 +34,7 @@ const ELEMENT_DATA: OperatorElement[]=[{
 })
 export class OperatorsComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', 'position','name', 'joindate', 'phonenumber'];
+  displayedColumns: string[] = ['select', '_id','name', 'joindate', 'phonenumber'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
   operatorSelection = new SelectionModel<OperatorElement>(true, []);

@@ -5,7 +5,7 @@ const validateRequest = require('_middleware/validate-request');
 const Role = require('_helpers/role');
 const devicesService = require('./devices.service');
 const { DataTypes } = require('sequelize');
-const jwtService = require('../authusers/auth.controller');
+
 
 
 // routes
