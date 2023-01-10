@@ -76,7 +76,7 @@ const ELEMENT_DATA: DeviceElement[]=[{
 
 export class DevicesComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', 'date', 'position','machinetype', 'machinename', 'description', 'operator', 'rawqty', 'achievedqty', 'remarks'];
+  displayedColumns: string[] = ['select', 'date', '_id','machinetype', 'machinename', 'description', 'operator', 'rawqty', 'achievedqty', 'remarks','delete'];
 
   devices: DeviceElement[];
   data: DataResult;
@@ -218,16 +218,34 @@ export class DevicesComponent implements OnInit {
 
   deleteDevice() {
     // iterated thru the selected devices and delete one by one
-    for (let item of this.deviceSelection.selected) {
-      console.log(item._id);
-      this.deviceService.deleteDevice(item._id).subscribe((data) => {
+    if (window.confirm('Are you sure you want to delete this row?')){
+      for (let item of this.deviceSelection.selected) {
+        console.log(item._id);
+        this.deviceService.deleteDevice(item._id).subscribe((data) => {
+          window.location.reload();
+        });
+      }
+    }
+
+  }
+
+  deleteRow(row: any) {
+    // const index = this.dataSource.indexOf(row);
+    // if (index !== -1) {
+    //   this.dataSource.splice(index, 1);
+    // }
+    if (window.confirm('Are you sure you want to delete this row?')){
+      this.deviceService.deleteDevice(row._id).subscribe((data) => {
         window.location.reload();
       });
     }
-  }
 
+  }
+  
+  
   editDevice() {
     // `${url}/${id}`
+    
     for (let item of this.deviceSelection.selected) {
       this.deviceService.getById(item._id).subscribe((data) => {
         //send the data for the child form

@@ -16,7 +16,7 @@ import { ExportService } from 'src/services/export.service';
 })
 export class UsersComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', 'email', 'name', 'role'];
+  displayedColumns: string[] = ['select', 'email', 'name', 'role', 'delete'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
  userSelection = new SelectionModel<UserElement>(true, []);
@@ -85,6 +85,18 @@ export class UsersComponent implements OnInit {
         window.location.reload();
       });
     }
+  }
+
+  deleteRow(row: any) {
+    // const index = this.dataSource.indexOf(row);
+    // if (index !== -1) {
+    //   this.dataSource.splice(index, 1);
+    // }
+    if (window.confirm('Are you sure you want to delete this row?')){
+      this.userService.delete(row.email).subscribe((data) => {
+        window.location.reload();
+      });
+    }  
   }
 
   edit() {

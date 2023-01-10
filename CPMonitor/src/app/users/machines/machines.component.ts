@@ -39,7 +39,7 @@ const ELEMENT_DATA: MachineElement[]=[{
 })
 export class MachinesComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', '_id','machinename', 'machinetype', 'purchasedate','vendor','vendorphone', 'amcrenewal'];
+  displayedColumns: string[] = ['select', '_id','machinename', 'machinetype', 'purchasedate','vendor','vendorphone', 'amcrenewal', 'delete'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
   machineSelection = new SelectionModel<MachineElement>(true, []);
@@ -105,6 +105,18 @@ export class MachinesComponent implements OnInit {
     }
   }
 
+  deleteRow(row: any) {
+    // const index = this.dataSource.indexOf(row);
+    // if (index !== -1) {
+    //   this.dataSource.splice(index, 1);
+    // }
+    if (window.confirm('Are you sure you want to delete this row?')){
+      this.machineservice.delete(row._id).subscribe((data) => {
+        window.location.reload();
+      });
+    }
+
+  }  
   edit() {
     // `${url}/${id}`
     for (let item of this.machineSelection.selected) {
