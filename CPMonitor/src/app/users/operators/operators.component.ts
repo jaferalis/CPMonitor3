@@ -34,7 +34,7 @@ const ELEMENT_DATA: OperatorElement[]=[{
 })
 export class OperatorsComponent implements OnInit {
   //selection column added
-  displayedColumns: string[] = ['select', '_id','name', 'joindate', 'phonenumber'];
+  displayedColumns: string[] = ['select', '_id','name', 'joindate', 'phonenumber','delete'];
   //deviceSelection = new SelectionModel<OperatorElement>(true, []);
   
   operatorSelection = new SelectionModel<OperatorElement>(true, []);
@@ -100,6 +100,16 @@ export class OperatorsComponent implements OnInit {
       });
     }
   }
+
+  deleteRow(row: any) {
+
+    if (window.confirm('Are you sure you want to delete this row?')){
+      this.operatorService.delete(row._id).subscribe((data) => {
+        window.location.reload();
+      });
+    }
+
+  } 
 
   edit() {
     // `${url}/${id}`
