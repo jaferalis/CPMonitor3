@@ -1,7 +1,7 @@
 <div class="container">
     <mat-toolbar class="mat-tool-bar">
       <span class="fill-remaining-space"></span>
-      <span>Operator Form</span>
+      <span  class="title-info">Operator Form</span>
       <span class="fill-remaining-space"></span>
     </mat-toolbar>
     <form   [formGroup]="form"   (ngSubmit)="onSubmit()"  class="normal-form">
@@ -20,14 +20,12 @@
                   <!-- End of Operator field -->           
 
                   <!-- For Join date of OPerator field -->
-                  <mat-form-field appearance="fill">
-                    <mat-label>Choose a Joining date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="joindate"  (dateChange)="onDateChange()">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-             
+
+                  <mat-form-field class="example-form-field">
+                    <input matInput [matDatepicker]="join" placeholder="JoinDate" formControlName="joindate">
+                    <mat-datepicker-toggle matSuffix [for]="join">  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+                    <mat-datepicker #join></mat-datepicker>
+                  </mat-form-field>                  
                   <!-- For End Join date of OPerator field -->                  
                   
                   <!-- For Phone Number field -->

@@ -1,9 +1,27 @@
 
-  .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgb(232, 236, 238);
-  }
+/* .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}
+
+.item-left {
+  text-align: left;
+}
+
+.item-center {
+  text-align: center;
+}
+
+.item-right {
+  text-align: right;
+} */
+
+
   
   /* .flex-container > div {
     background-color: #E089AB;
@@ -81,3 +99,37 @@ table {
     max-height: 300px;
     overflow: auto;
   }
+
+  .imgcontainer {
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    right: 50px;
+  }
+
+  .mat-progress-bar {
+    width: 200px; /* set the width */
+    height: 20px; /* set the height */
+  }
+  
+  mat-card-content {
+    display: flex;
+    justify-content: center; /* aligns the progress bar to center of the card */
+  }
+
+  .my-card{
+    width: 80%; /* set the width */
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-card-header{
+    justify-content:center;
+  }
+  
+  
+  

@@ -1,44 +1,38 @@
 <div class="container">
     <mat-toolbar class="mat-tool-bar">
         <span class="fill-remaining-space"></span>
-        <span>Operator Information</span>
+        <span class="title-info">Operator Information</span>
         <span class="fill-remaining-space"></span>
     </mat-toolbar>
-    <br>
-    <!-- CRUD Buttons -->
-    <div>
-        <!-- <h2 style="display:inline-block; margin-left:10px">Device Health</h2> -->
-        <button mat-raised-button [ngClass]="'mat-raised-but'"
-            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"  
-            (click)="this.router.navigateByUrl('users/operator')">Add
-        </button>
-        <button mat-raised-button [ngClass]="'mat-raised-but'"
-            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
-            [disabled]=false (click)="edit()">Edit
-        </button>
+    <!-- This flex container start -->
+    <div class="flex-container">
+        <div class="column item-left">
+            <img src="assets/images/icons8-txt-100.png" alt="Excel Icon" [cdkCopyToClipboard]="copyData2()">
+            <img src="assets/images/icons8-microsoft-excel-100.png" alt="Excel Icon" (click)="exportexcel()">
+            <img src="assets/images/icons8-pdf-100.png" alt="PDF Icon" (click)="exportpdf()">
+        </div>
+        <div class="column item-center">
 
-        <button mat-raised-button [ngClass]="'mat-raised-but'"
-            style="display:inline-block; vertical-align: top; float: right;margin-top: 10px; margin-right: 10px;"
-            [disabled]=false (click)="delete()">Delete
-        </button>
-
+        </div>
+        <div class="column item-right">
+            <img class="imgcontainer" src="../../assets/images/icons8-add-new-100.png" alt=""
+                (click)="this.router.navigateByUrl('users/operator')">
+            <img class="imgcontainer" src="../../assets/images/icons8-remove-100.png" alt="" (click)="delete()">
+        </div>
     </div>
-    <!-- Leave a gap here -->
-    <div class="example-button-row" >
-        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" [cdkCopyToClipboard]="copyData2()"
-            (click)="copyData2()">Copy</button>
-        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" (click)="exportexcel()">Excel</button>
-        <button mat-raised-button [ngClass]="'mat-raised-but'" style="margin-right: 10px;" (click)="exportpdf()">PDF</button>
-        <br>
-        <br>
+
+    <!-- Start of search button -->
+    <div class="example-button-row">
         <mat-form-field floatLabel="never">
             <input #search matInput placeholder="Search" (keyup)="searchThis(search.value)">
         </mat-form-field>
     </div>
-    <br>
+    <!-- End of search buttom -->
+    <!-- This is flex container end -->
     <!-- CRUD Buttons -->
     <div class="table-container">
-        <table mat-table [dataSource]="dataSource" matSort  [matSortActive]="'_id'"  [matSortDirection]="'desc'" class="mat-elevation-z8" id="excel-table">
+        <table mat-table [dataSource]="dataSource" matSort [matSortActive]="'_id'" [matSortDirection]="'desc'"
+            class="mat-elevation-z8" id="excel-table">
 
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
@@ -74,7 +68,8 @@
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
                 <!-- <td mat-cell *matCellDef="let element"> {{element.name}} </td> -->
-                <td mat-cell *matCellDef="let element"> <a href="#/users/operator?Id={{element._id}}" >{{element.name}} </a></td>                
+                <td mat-cell *matCellDef="let element"> <a href="#/users/operator?Id={{element._id}}">{{element.name}}
+                    </a></td>
             </ng-container>
             <!-- End Name Column -->
 
@@ -88,11 +83,10 @@
             <ng-container matColumnDef="delete">
                 <th mat-header-cell *matHeaderCellDef>Delete</th>
                 <td mat-cell *matCellDef="let row">
-                  <mat-icon (click)="deleteRow(row)">delete</mat-icon>
+                    <img src="../../assets/images/icons8-remove-48.png" alt="" (click)="deleteRow(row)">
                 </td>
-            </ng-container>       
-              
-              
+            </ng-container>
+
             <!-- This displays all columns and added the selection toggle for selection check box -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->

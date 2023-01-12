@@ -85,8 +85,9 @@ export class DevicesComponent implements OnInit {
   searchword: String =""
   res:any;
   records: Number =0;
-  rawqty: Number =0
-  achievedqty:Number=0;
+  rawqty: number =0
+  achievedqty:number=0;
+  percent:number = this.achievedqty/this.rawqty * 100;
 
   dataSource = new MatTableDataSource<DeviceElement>();
   //dataSource :DeviceElement[];
@@ -142,6 +143,7 @@ export class DevicesComponent implements OnInit {
             console.log("Result" + JSON.stringify(this.res));
             this.rawqty =this.res[0].rawqty;
             this.achievedqty = this.res[0].achievedqty;
+            this.percent = this.achievedqty/this.rawqty * 100;
           });
         }
     })

@@ -20,6 +20,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {MatSelectModule} from '@angular/material/select';
     ClipboardModule,
     MatGridListModule,
     MatInputModule,MatIconModule, FormsModule,ReactiveFormsModule,MatToolbarModule,MatCheckboxModule,
-    MatSortModule, MatTableModule, MatPaginatorModule,MatSelectModule
+    MatSortModule, MatTableModule, MatPaginatorModule,MatSelectModule,
+    MatProgressBarModule
   ]
 })
 export class DevicesModule { }
