@@ -145,8 +145,8 @@ html {
 /* Page BG */
 .page-bg {
   margin: 10px;
-  height: 98%;
-  width: 100%;
+  height: 90%;
+  width: 99%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url('/assets/images/bg.png') center no-repeat;
     border-width:10px;

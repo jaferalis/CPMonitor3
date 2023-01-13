@@ -96,8 +96,16 @@ table {
   /* This is for scrollable rows if the paging is changed */
   .table-container {
     margin-top: 10px;
-    max-height: 300px;
+    max-height: 65%;
     overflow: auto;
+  }
+
+  mat-paginator {
+    width: 95%;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    bottom: 0;
   }
 
   .imgcontainer {

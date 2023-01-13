@@ -25,6 +25,14 @@
 
   .table-container {
     margin-top: 10px;
-    max-height: 500px;
+    max-height: 65%;
     overflow: auto;
+  }
+
+  mat-paginator {
+    width: 95%;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    bottom: 0;
   }

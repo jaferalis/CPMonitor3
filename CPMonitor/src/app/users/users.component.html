@@ -89,6 +89,6 @@
         </table>
     </div>
 
-    <mat-paginator #devicePaginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #devicePaginator  [pageIndex]="1" [pageSize]="100" [pageSizeOptions]="[5, 10, 15, 20,100]" showFirstLastButtons></mat-paginator>    
 
 </div>
