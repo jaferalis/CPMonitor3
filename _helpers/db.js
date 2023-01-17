@@ -26,8 +26,9 @@ async function initialize() {
     db.Devices = require('../production/devices.model')(sequelize);
     db.Machines = require('../machines/machines.model')(sequelize);
     db.Operators = require('../operators/operators.model')(sequelize);
-    db.Inventories = require('../inventory/inventory.model')(sequelize);
-
+    // db.Components = require('../component/component.model')(sequelize);
+    // db.ProdComps = require('../prodcomp/prodcomp.model')(sequelize); //THis table give the compostiion of product
+    // db.VendorOrders = require('../vendororder/vendororder.model')(sequelize);
 
     // sync all models with database
     await sequelize.sync({ alter: true });

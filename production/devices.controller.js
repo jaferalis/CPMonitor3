@@ -22,7 +22,12 @@ module.exports = router;
 // route functions
 
 function getAll(req, res, next) {
-    devicesService.getAll()
+    const queryParams = {};
+    for (const key in req.query) {
+      queryParams[key] = req.query[key];
+    }
+    //console.log(queryParams);
+    devicesService.getAll(queryParams)
         .then(devices => res.json(devices))
         .catch(next);
 }

@@ -91,7 +91,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .foottext{
     color: white;
     float: right;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .toolbar{
@@ -136,4 +136,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: rgb(255, 255, 255);
   font-size: 60px;
   font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  mat-paginator {
+    display: none;
+  }
+  mat-header-row {
+    position: static;
+  }
+  mat-table{
+    height: 100vh;
+  }
+  
 }

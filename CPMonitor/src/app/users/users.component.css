@@ -25,9 +25,11 @@ table {
 
 .table-container {
   margin-top: 10px;
-  max-height: 65%;
+  max-height: 60vh;
   overflow: auto;
+  width: 100%;
 }
+
 
 mat-paginator {
   width: 95%;

@@ -72,15 +72,20 @@ export class DashboardComponent implements OnInit {
 
   constructor(private deviceService: DevicesService) {
     // Object.assign(this,{ machineTypeProd= })
-    this.view = [600, 300];
+    this.view = [700, 300];
     this.SelectStartDate.setHours(0, 0, 0, 0);
     this.SelectEndDate.setHours(23, 59, 59, 999);
     //Need to pass the date range and groupby
     this.selectedGroup ="machinetype";
    // this.machineTypeInit();
-    this.machineTypeGroup();
-    this.machineNameGroup();
-    this.operatorTypeGroup();
+
+   this.deviceService.getDevices().subscribe( devs=>{
+    this.machineTypeGroup(devs);
+    this.machineNameGroup(devs);
+    this.operatorTypeGroup(devs);
+   });
+
+
     this.machineTypeProd = machineTypeProduction;
     this.operatorTypeProd = machineTypeProduction;
     this.machineNameProd = machineTypeProduction
@@ -195,21 +200,21 @@ export class DashboardComponent implements OnInit {
     this.dateStart = data.start;
     this.dateEnd = data.end;
   //  this.machineTypeInit(this.dateStart, this.dateEnd);
-    this.machineTypeGroup();
-    this.machineNameGroup();
-    this.operatorTypeGroup();
+    // this.machineTypeGroup();
+    // this.machineNameGroup();
+    // this.operatorTypeGroup();
  
   }
 
   onChangeCategory(event:any){
 
-   this.machineTypeGroup();
-   this.machineNameGroup();
-   this.operatorTypeGroup();
+  //  this.machineTypeGroup();
+  //  this.machineNameGroup();
+  //  this.operatorTypeGroup();
   }
 
-  machineTypeGroup(){
-    this.deviceService.getDevices().subscribe( devs=>{
+  machineTypeGroup(devs:any){
+  //  this.deviceService.getDevices().subscribe( devs=>{
       var res = alasql('SELECT date, machinetype, operator,machinename, SUM(rawqty) AS rawqty, SUM(achievedqty) AS achievedqty  FROM ? where (date >=  "' + this.SelectStartDate.toISOString() + '") AND  (date <= "' + this.SelectEndDate.toISOString() + '" ) GROUP BY machinetype', [devs]);
       this.machineTypeProd =[]; //Empty the array
       res.forEach((element: any) => {
@@ -228,12 +233,12 @@ export class DashboardComponent implements OnInit {
       });
       // ngx-charts bar chart is not refreshing results array so try https://github.com/swimlane/ngx-charts/issues/1097 this.data = [...this.data];
       this.machineTypeProd = [...this.machineTypeProd];      
-    });
+ //   });
     
   }
 
-  operatorTypeGroup(){
-    this.deviceService.getDevices().subscribe( devs=>{
+  operatorTypeGroup(devs:any){
+    //this.deviceService.getDevices().subscribe( devs=>{
       var res = alasql('SELECT date, machinetype, operator,machinename, SUM(rawqty) AS rawqty, SUM(achievedqty) AS achievedqty  FROM ? where (date >=  "' + this.SelectStartDate.toISOString() + '") AND  (date <= "' + this.SelectEndDate.toISOString() + '" ) GROUP BY operator', [devs]);
       this.operatorTypeProd =[]; //Empty the array
       res.forEach((element: any) => {
@@ -252,11 +257,11 @@ export class DashboardComponent implements OnInit {
       });
       // ngx-charts bar chart is not refreshing results array so try https://github.com/swimlane/ngx-charts/issues/1097 this.data = [...this.data];
       this.operatorTypeProd = [...this.operatorTypeProd];
-    });
+   // });
   }
 
-  machineNameGroup(){
-    this.deviceService.getDevices().subscribe( devs=>{
+  machineNameGroup( devs:any){
+  // this.deviceService.getDevices().subscribe( devs=>{
       var res = alasql('SELECT date, machinetype, operator,machinename, SUM(rawqty) AS rawqty, SUM(achievedqty) AS achievedqty  FROM ? where (date >=  "' + this.SelectStartDate.toISOString() + '") AND  (date <= "' + this.SelectEndDate.toISOString() + '" ) GROUP BY machinename', [devs]);
       this.machineNameProd =[]; //Empty the array
       res.forEach((element: any) => {
@@ -275,21 +280,27 @@ export class DashboardComponent implements OnInit {
       });
       // ngx-charts bar chart is not refreshing results array so try https://github.com/swimlane/ngx-charts/issues/1097 this.data = [...this.data];
       this.machineNameProd = [...this.machineNameProd];      
-    });
+   // });
   }
 
   onEndDateChange(){
    this.SelectEndDate.setHours(23, 59, 59, 999);
-   this.machineTypeGroup();
-   this.machineNameGroup();
-   this.operatorTypeGroup();
+   this.deviceService.getDevices().subscribe( devs=>{
+    this.machineTypeGroup(devs);
+    this.machineNameGroup(devs);
+    this.operatorTypeGroup(devs);
+   });
+
   }
 
   onStartDateChange(){
     this.SelectStartDate.setHours(0, 0, 0, 0);
-    this.machineTypeGroup();
-    this.machineNameGroup();
-    this.operatorTypeGroup();
+    this.deviceService.getDevices().subscribe( devs=>{
+      this.machineTypeGroup(devs);
+      this.machineNameGroup(devs);
+      this.operatorTypeGroup(devs);
+    });
+
   }
 
 }

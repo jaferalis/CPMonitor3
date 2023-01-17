@@ -15,7 +15,8 @@ app.use('/authuser', require('./users/users.controller'));
 app.use('/devices', require('./production/devices.controller'));
 app.use('/machines', require('./machines/machines.controller'));
 app.use('/operators', require('./operators/operators.controller'));
-app.use('/inventories', require('./inventory/inventory.controller'));
+// app.use('/components', require('./component/component.controller'));
+// app.use('/prodcomps', require('./prodcomp/prodcomp.controller'));
 // global error handler
 app.use(errorHandler);
 

@@ -1,65 +1,61 @@
-<div class="container">
-  <mat-toolbar class="mat-tool-bar">
-    <span class="fill-remaining-space"></span>
-    <span  class="title-info">Dashboard</span>
-    <span class="fill-remaining-space"></span>
-  </mat-toolbar>
-  <!-- <mat-form-field >
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-      <input matStartDate formControlName="start" placeholder="Start date" #dateRangeStart>
-      <input matEndDate formControlName="end" placeholder="End date" #dateRangeEnd
-        (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
-    </mat-date-range-input>
-    <mat-hint>YYYY-MM-DD– YYYY-MM-DD</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
 
-    <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
-    <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
-
-
-  </mat-form-field> -->
-  <mat-form-field style="margin-left:50px ; margin-top: 50px;">
-    <input matInput [(ngModel)] ="SelectStartDate" [matDatepicker]="picker1" placeholder="Start Date" #startDate (ngModelChange)="onStartDateChange()">
-    <mat-datepicker-toggle matSuffix [for]="picker1">
-      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field style="margin-left:50px ; margin-top: 50px;">
-    <input matInput  [(ngModel)] ="SelectEndDate" [matDatepicker]="picker2" placeholder="End Date" #endDate (ngModelChange)="onEndDateChange()" >
-    <mat-datepicker-toggle matSuffix [for]="picker2">
-      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
-
-  <br>
-  <div>
-    <div style="float: left; width: 50%;">
-      <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="machineTypeProd" [barPadding]=0
-      [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
-      [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true">
-    </ngx-charts-bar-vertical-2d>
+  <div class="container">
+    <div>
+      <mat-toolbar class="mat-tool-bar">
+        <span class="fill-remaining-space"></span>
+        <span  class="title-info">Dashboard</span>
+        <span class="fill-remaining-space"></span>
+      </mat-toolbar>
     </div>
-    <div style="float: left; width: 50%;">
-      <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="operatorTypeProd" [barPadding]=0
-      [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelOperator"
-      [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
-      [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true">
-    </ngx-charts-bar-vertical-2d>
+
+
+    <div>
+      <mat-form-field style="margin-left:50px ; margin-top: 50px;">
+        <input matInput [(ngModel)] ="SelectStartDate" [matDatepicker]="picker1" placeholder="Start Date" #startDate (ngModelChange)="onStartDateChange()">
+        <mat-datepicker-toggle matSuffix [for]="picker1">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    
+      <mat-form-field style="margin-left:50px ; margin-top: 50px;">
+        <input matInput  [(ngModel)] ="SelectEndDate" [matDatepicker]="picker2" placeholder="End Date" #endDate (ngModelChange)="onEndDateChange()" >
+        <mat-datepicker-toggle matSuffix [for]="picker2">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
     </div>
-    <div style="float: left; width: 25%;">
-      <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="machineNameProd" [barPadding]=0
-      [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelMachineName"
-      [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
-      [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true">
-    </ngx-charts-bar-vertical-2d>
+
+  
+
+    <div class="flex-container"  >
+      <div class="column item-left ">
+        <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="machineTypeProd" [barPadding]=0
+        [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
+        [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true" >
+      </ngx-charts-bar-vertical-2d>
+      </div>
+      <div class="column item-center"  >
+        <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="operatorTypeProd" [barPadding]=0
+        [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelOperator"
+        [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
+        [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true">
+      </ngx-charts-bar-vertical-2d>
+      </div>
+
     </div>
+
+      <div class="flex-container"  >
+        <div class="column item-center"  >
+          <ngx-charts-bar-vertical-2d [view]="[view[0],view[1]]" [results]="machineNameProd" [barPadding]=0
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabelMachineName"
+          [yAxisLabel]="yAxisLabel" [legend]="showLegend" [legendTitle]="legendTitle" [showDataLabel]="true"
+          [showGridLines]="true" [roundEdges]="true" [xAxis]="true" [yAxis]="true">
+        </ngx-charts-bar-vertical-2d>
+        </div>
+      </div>
+
+  
   </div>
-
- 
-</div>

@@ -10,8 +10,15 @@ module.exports = {
     delete: _delete
 };
 
-async function getAll() {
-    return await db.Devices.findAll();
+async function getAll(params) {
+    //get the query params and form the query here.
+    // const {where} =  params;
+    const jsonstr = "{where:" + JSON.stringify(params) + "}";
+    console.log("where =" + jsonstr);
+    // return await db.Devices.findAll({where:{
+    //     machinename:"Lathe-1"
+    // }});
+    return await db.Devices.findAll({where: params});
 }
 
 async function getById(id) {
