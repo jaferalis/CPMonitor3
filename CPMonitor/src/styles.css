@@ -18,6 +18,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: white;
     border-width:10px;
     border-radius: 10px;
+    overflow: auto;
   }
 
   .mat-header-cell {
