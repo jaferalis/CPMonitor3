@@ -38,6 +38,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     
   }
 
+  .title-info1 {
+    margin: 10px;
+    font-size: 25px; /* set size */
+    color: rgb(255, 255, 255);
+    
+  }
+
   .fill-remaining-space{
     flex: 1 1 auto
   }
